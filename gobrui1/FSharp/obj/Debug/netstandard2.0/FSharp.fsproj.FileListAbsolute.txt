@@ -1,0 +1,8 @@
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.deps.json
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.dll
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.pdb
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.fsprojAssemblyReference.cache
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfoInputs.cache
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfo.fs
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.dll
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.pdb

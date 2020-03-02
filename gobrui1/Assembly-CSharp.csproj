@@ -45,6 +45,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Action\Lookat2D.cs" />
      <Compile Include="Assets\Scripts\Util\Utilities\CharaUtil.cs" />
      <Compile Include="Assets\Scripts\Util\Utilities\EventTest.cs" />
