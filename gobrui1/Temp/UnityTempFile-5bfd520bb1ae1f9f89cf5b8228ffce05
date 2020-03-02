@@ -75,6 +75,7 @@
 /reference:"/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 /reference:"/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll"
 /reference:"Assets/FSharp.Core.dll"
+/reference:"Assets/Plugins/FSharp.dll"
 /reference:"/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll"
 /reference:"/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll"
 /reference:"/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.dll"
