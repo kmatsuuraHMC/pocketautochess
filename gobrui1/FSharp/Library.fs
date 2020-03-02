@@ -1,5 +1,7 @@
-﻿namespace FSharp
+﻿namespace Library1
 
-module Say =
-    let hello name =
-        printfn "Hello %s" name
+open UnityEngine
+
+type TestScript() = 
+    inherit MonoBehaviour()
+    member this.Start() = Debug.Log("Hello F# World")

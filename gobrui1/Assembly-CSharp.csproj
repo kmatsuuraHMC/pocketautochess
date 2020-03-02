@@ -246,6 +246,9 @@
  <Reference Include="UnityEditor">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
+ <Reference Include="FSharp.Core">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
+ </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
  </Reference>

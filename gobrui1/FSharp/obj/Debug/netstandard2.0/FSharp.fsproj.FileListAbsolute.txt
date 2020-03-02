@@ -6,3 +6,7 @@
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfo.fs
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.pdb
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.dll
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.pdb
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.xml
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.fsproj.CopyComplete

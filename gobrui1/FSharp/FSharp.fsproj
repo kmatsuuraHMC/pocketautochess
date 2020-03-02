@@ -6,6 +6,10 @@
 
   <ItemGroup>
     <Compile Include="Library.fs" />
+    <Reference Include="UnityEngine" HintPath="./Data/Managed/UnityEngine.dll" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="../Assets/Plugins" />
+  </Target>
 
 </Project>
