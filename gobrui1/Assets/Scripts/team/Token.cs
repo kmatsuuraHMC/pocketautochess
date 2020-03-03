@@ -1,5 +1,6 @@
 using UnityEngine;
 using S = System;
+// using FSTokenF;
 
 /// キャラクター基底クラス.
 /// SpriteRendererが必要.
@@ -138,7 +139,6 @@ public class Token : MonoBehaviour
             // そのまま返す.
             return min;
         }
-
         // 自身のサイズを考慮する.
         min.x += _width;
         min.y += _height;
