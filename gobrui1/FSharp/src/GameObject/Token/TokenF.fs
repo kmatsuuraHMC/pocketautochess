@@ -134,15 +134,16 @@ module tokenf =
         g.name <- name
         obj
 
-    let mutable prefab: ValueOption<GameObject> = ValueNone
+    let mutable prefab: GameObject = null
 
     let GetPrefab name =
         match prefab with
-        | ValueNone ->
-            prefab <- ValueSome(Resources.Load("Prefabs/" + name) :?> GameObject)
-            ValueNone
-        | ValueSome x -> prefab
+        | null ->
+            prefab <- Resources.Load("Prefabs/" + name) :?> GameObject
+            null
+        | _ -> prefab
 
-    let CreateInstance2<'Type when 'Type :> Token>(prefab: GameObject, x, y, name) =
+    let CreateInstance2<'Type when 'Type :> TokenF>(prefab: GameObject, x, y, name) =
         let pos = Vector3(x, y, 0.0f)
-        CreateInstance(prefab, pos, name)
+        let g = CreateInstance<'Type>(prefab, pos, name)
+        g

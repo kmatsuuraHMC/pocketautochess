@@ -10,9 +10,9 @@ public class Particle : Token
     public static Particle Add(float x, float y)
     {
         // プレハブを取得
-        _prefab = GetPrefab(_prefab, "Particle");
+        _prefab = TokenF.tokenf.GetPrefab("Particle");
         // プレハブからインスタンスを生成
-        return CreateInstance2<Particle>(_prefab, x, y, "Particle");
+        return TokenF.tokenf.CreateInstance2<Particle>(_prefab, x, y, "Particle");
     }
 
     /// 開始。コルーチンで処理を行う

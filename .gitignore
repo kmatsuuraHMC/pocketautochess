@@ -2,6 +2,9 @@ gobrui1/bin/
 gobrui1/Library/
 gobrui1/FSharp/Data/
 gobrui1/FSharp/bin/
+gobrui1/FSharp/obj/Debug/netstandard2.0/
+gobrui1/FSharp/bin/Debug/netstandard2.0/
+*.dll
 gobrui1/FSharp/obj/
 gobrui1/FSharp/.ionide/
 gobrui1/Temp/
