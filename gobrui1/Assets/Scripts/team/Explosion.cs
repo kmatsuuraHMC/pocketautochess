@@ -8,10 +8,9 @@ public class Explosion : Token
     /// パーティクルの生成
     public static Explosion Add(Character opponent)
     {
-        GameObject _prefab = null;
         // プレハブを取得
-        _prefab = GetPrefab(_prefab, "Explosion");
-        var explosion = CreateInstance2<Explosion>(_prefab, opponent.tokenX, opponent.tokenY, "Explosion");
+        var _prefab =TokenF.tokenf.GetPrefab("Explosion");
+        var explosion =TokenF.tokenf.CreateInstance2<Explosion>(_prefab, opponent.tokenX, opponent.tokenY, "Explosion");
         // プレハブからインスタンスを生成
         return explosion;
     }

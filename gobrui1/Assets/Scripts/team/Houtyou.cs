@@ -10,8 +10,8 @@ public class Houtyou : Token
     public static Houtyou Add(Character rancher, Character opponent)
     {
         // プレハブを取得
-        _prefab = GetPrefab(_prefab, "Houtyou");
-        var houtyou = CreateInstance2<Houtyou>(_prefab, rancher.tokenX, rancher.tokenY, "Houtyou");
+        _prefab = TokenF.tokenf.GetPrefab("Houtyou");
+        var houtyou = TokenF.tokenf.CreateInstance2<Houtyou>(_prefab, rancher.tokenX, rancher.tokenY, "Houtyou");
         houtyou.SetVelocity(opponent.tokenX - rancher.tokenX, opponent.tokenY- rancher.tokenY,10);
         // プレハブからインスタンスを生成
         return houtyou;

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using S = System;
 using System.Collections.Generic;
+using Microsoft.FSharp.Core;
 
 /// 敵
 public class Character : Token
@@ -13,8 +14,7 @@ public class Character : Token
     public Team myTeam, opponentTeam;
     public static Character Deploy(float xIn, float yIn, int numberIn, string race, Team toSetmyTeam, Team toSetOpponentTeam)
     {
-        GameObject _prefab = null;
-        _prefab = GetPrefab(_prefab, race);
+        var _prefab = TokenF.tokenf.GetPrefab(race);
         var chara = AddWithRace(xIn, yIn, numberIn, race);
         chara.number = numberIn;
         chara.myTeam = toSetmyTeam;
@@ -24,13 +24,12 @@ public class Character : Token
     }
     private static Character AddWithRace(float xIn, float yIn, int numberIn, string race)
     {
-        GameObject _prefab = null;
-        _prefab = GetPrefab(_prefab, race);
+        GameObject _prefab = TokenF.tokenf.GetPrefab(race);
         switch (race)
         {
-            case "Gobrui": return CreateInstance2<Gobrui>(_prefab, xIn, yIn, race + numberIn.ToString()).ToCharacter();
-            case "Maruta": return CreateInstance2<Maruta>(_prefab, xIn, yIn, race + numberIn.ToString()).ToCharacter();
-            case "Gagoiru": return CreateInstance2<Gagoiru>(_prefab, xIn, yIn, race + numberIn.ToString()).ToCharacter();
+            case "Gobrui": return TokenF.tokenf.CreateInstance2<Gobrui>(_prefab, xIn, yIn, race + numberIn.ToString()).ToCharacter();
+            case "Maruta": return TokenF.tokenf.CreateInstance2<Maruta>(_prefab, xIn, yIn, race + numberIn.ToString()).ToCharacter();
+            case "Gagoiru": return TokenF.tokenf.CreateInstance2<Gagoiru>(_prefab, xIn, yIn, race + numberIn.ToString()).ToCharacter();
             default: return null;
         };
     }
