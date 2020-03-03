@@ -3,6 +3,7 @@ using System.Collections;
 using S = System;
 using System.Collections.Generic;
 using Microsoft.FSharp.Core;
+using System.Linq;
 
 /// 敵
 public class Character : Token
@@ -54,7 +55,7 @@ public class Character : Token
     {
         var xyn_c = new xynComparer(chara);
         var teamMates_xyn = new List<Character>(teamMates);
-        teamMates_xyn.Sort(xyn_c);
+        teamMates_xyn.Min();
         var chosen = teamMates_xyn[0];
         return chosen;
     }
