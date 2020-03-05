@@ -1,1 +1,0 @@
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache

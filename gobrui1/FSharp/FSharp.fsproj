@@ -3,13 +3,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="src/GameObject/Token/TokenF.fs" />
-    <Compile Include="src/GameObject/Token/GlobalState.fs"/>
-    <Compile Include="src/GameObject/Token/BackBoard.fs"/>
-    <Compile Include="src/GameObject/Token/TeamF.fs" />
     <Compile Include="src/GameObject/Token/Vector3.fs" />
-    <Compile Include="src/GameObject/Token/Explosion.fs" />
-    <Compile Include="src/GameObject/Token/Gagoiru.fs" />
+    <Compile Include="src/GameObject/Token/TokenF.fs" />
+    <Compile Include="src/GameObject/Token/Team/TeamF.fs" />
+    <Compile Include="src/GameObject/Token/Prefab/Effect/Explosion.fs" />
+    <Compile Include="src/GameObject/Token/Prefab/Character/Gagoiru.fs" />
+    <Compile Include="src/GameSystem/GlobalState.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
