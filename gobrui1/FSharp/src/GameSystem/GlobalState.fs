@@ -1,4 +1,4 @@
-namespace BackBoard
+namespace GlobalState
 // ココらへん、制御構造を書き直す必要がある
 open UnityEngine
 open TeamF

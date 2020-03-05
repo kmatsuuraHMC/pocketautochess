@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using S = System;
-public class BackBoard : Boards.BoardController
+public class BackBoard : GlobalState.GlobalState
 {
     // public static DeployStatus deployStatus = DeployStatus.none;
     // static int number1 = 0, number2 = 0;

@@ -8,6 +8,7 @@ open TurnCount
 open DeployCount
 
 type BoardController() =
+    inherit  MonoBehaviour()
     let mutable turn = TurnCount.deploy
     let mutable deploy = DeployCount.none
 
@@ -20,6 +21,7 @@ type BoardController() =
         and set (v) = deploy <- v
 
 and Board1(boardController) =
+    inherit MonoBehaviour()
     let team: Team = Team()
     let boardController: BoardController = boardController
     member this.Team = team
@@ -37,6 +39,7 @@ and Board1(boardController) =
             | _ -> ()
 
 and Board2(boardController) =
+    inherit MonoBehaviour()
     let team: Team = Team()
     let boardController: BoardController = boardController
     member this.Team = team
