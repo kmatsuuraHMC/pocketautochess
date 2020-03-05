@@ -2,6 +2,8 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
+    <CscToolPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Tools/RoslynScripts</CscToolPath>
+    <CscToolExe>unity_csc.sh</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1613e9a8-9e99-933b-83cc-1d29b1fc168e}</ProjectGuid>
+    <ProjectGuid>{A8E91316-999E-3B93-83CC-1D29B1FC168E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -45,6 +47,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
      <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Action\Lookat2D.cs" />
      <Compile Include="Assets\Scripts\Util\Utilities\CharaUtil.cs" />
@@ -53,8 +63,6 @@
      <Compile Include="Assets\Scripts\Util\Utilities\GetSprite.cs" />
      <Compile Include="Assets\Scripts\Util\Utilities\GuiUtil.cs" />
      <Compile Include="Assets\Scripts\Util\Utilities\MathUtil.cs" />
-     <Compile Include="Assets\Scripts\fsTes\tes.cs" />
-     <Compile Include="Assets\Scripts\team\Character.cs" />
      <Compile Include="Assets\Scripts\team\Explosion.cs" />
      <Compile Include="Assets\Scripts\team\Gagoiru.cs" />
      <Compile Include="Assets\Scripts\team\GameObject\BackBoard.cs" />
@@ -65,11 +73,38 @@
      <Compile Include="Assets\Scripts\team\Houtyou.cs" />
      <Compile Include="Assets\Scripts\team\Maruta.cs" />
      <Compile Include="Assets\Scripts\team\Particle.cs" />
-     <Compile Include="Assets\Scripts\team\Team.cs" />
-     <Compile Include="Assets\Scripts\team\Testscript.cs" />
-     <Compile Include="Assets\Scripts\team\Token.cs" />
- <Reference Include="UnityEngine">
- <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VSCode.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.CollabProxy.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Tilemap.Editor">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -244,9 +279,6 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor">
- <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="FSharp.Core">
  <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
@@ -600,54 +632,8 @@
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{996b4fc5-d20d-af7a-cc8c-d4cdf491487b}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{dd75faa5-cec7-559a-3a8a-4bcf86a202d6}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{33938082-01ce-c616-6160-7e9db924a412}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{536b80c3-a7dd-d79d-f1cf-0d228acd34cc}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{bf1bbeb2-fb9e-2c92-1e09-406c9f7f7fb5}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
-      <Project>{ca284ac3-507e-9ca4-3ca4-26c98b56a179}</Project>
-      <Name>Unity.CollabProxy.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{32344264-8b3d-0510-cb00-56c739a30441}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{b76c53d2-740c-f964-c9c3-16f3c576ca75}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj">
-      <Project>{8a8c54b3-434a-1dbd-2885-2d989c42537e}</Project>
-      <Name>Unity.2D.Tilemap.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{eb7c2387-09b5-38aa-2aa3-0972430c2afc}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{94a11706-b793-d695-2963-fad84e4c0474}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

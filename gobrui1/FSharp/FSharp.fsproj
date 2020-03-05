@@ -3,9 +3,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="src/GameStatus/DeployCount.fs" />
+    <Compile Include="src/GameStatus/TurnCount.fs" />
+    <Compile Include="src/GameStatus/MouseCount.fs" />
     <Compile Include="src/GameObject/Token/Vector3.fs" />
     <Compile Include="src/GameObject/Token/TokenF.fs" />
     <Compile Include="src/GameObject/Token/Team/TeamF.fs" />
+    <Compile Include="src/GameObject/Token/Team/BoardController.fs" />
     <Compile Include="src/GameObject/Token/Prefab/Effect/Explosion.fs" />
     <Compile Include="src/GameObject/Token/Prefab/Character/Gagoiru.fs" />
     <Compile Include="src/GameSystem/GlobalState.fs" />

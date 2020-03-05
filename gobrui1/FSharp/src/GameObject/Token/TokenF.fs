@@ -3,6 +3,7 @@ namespace TokenF
 open UnityEngine
 open Vector3Util.OperatorV2
 open Vector3Util.OperatorV3
+open tokenUtil
 
 type Token() =
     inherit MonoBehaviour()
