@@ -1,16 +1,6 @@
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.deps.json
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.pdb
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.fsprojAssemblyReference.cache
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfoInputs.cache
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfo.fs
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.dll
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.pdb
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.dll
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.pdb
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.xml
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.fsproj.CopyComplete
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/Assembly-CSharp.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/System.Numerics.Vectors.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/System.Runtime.InteropServices.WindowsRuntime.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEditor.dll
@@ -26,6 +16,7 @@
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.CoreModule.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.CrashReportingModule.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.DirectorModule.dll
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.DSPGraphModule.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.GameCenterModule.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.GridModule.dll
@@ -79,7 +70,8 @@
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/ExCSS.Unity.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/Unity.Legacy.NRefactory.dll
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/Unity.CecilTools.dll
-/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/Assembly-CSharp.pdb
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.pdb
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.xml
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.AIModule.pdb
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.AIModule.xml
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.AccessibilityModule.pdb
@@ -200,3 +192,9 @@
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEditor.xml
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.ARModule.pdb
 /home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/bin/Debug/netstandard2.0/UnityEngine.ARModule.xml
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.fsprojAssemblyReference.cache
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfoInputs.cache
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.AssemblyInfo.fs
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.fsproj.CopyComplete
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.dll
+/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/FSharp/obj/Debug/netstandard2.0/FSharp.pdb

@@ -1,49 +1,50 @@
-using UnityEngine;
-using System.Collections;
-using S = System;
-using System.Collections.Generic;
-using System.Linq;
-
-public class Gagoiru : Character
+namespace Gagoiru
 {
-    private void Start()
+
+    using UnityEngine;
+    using System.Collections;
+    using S = System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using TeamF;
+
+    public class Gagoiru : Character
     {
-        hp = 3000;
-    }
-    private void Update()
-    {
-        if (hp < 0) { Team.delete(myTeam.teamMates, this.number); }
-        if (BackBoard.turn == BackBoard.Turn.battle)
+        public Gagoiru(GameObject _gameObject, Team _myTeam, Team _opponentTeam, S.IntPtr _charaNum, float _hp) : base(_gameObject, _myTeam, _opponentTeam, _charaNum, _hp) { }
+        private void Start()
         {
-            if (opponentTeam.teamMates.Count == 0) { return; }
-            var attackTarget = chooseAttackTarget(opponentTeam.teamMates, this);
-            if (getDistanceSqToOpponent(attackTarget) < 10)
+            hp = 3000;
+        }
+        private void Update()
+        {
+            if (hp < 0) { myTeam.DeleteTeamMember(this); }
+            if (BackBoard.turn == BackBoard.Turn.battle)
             {
-                SetVelocity(1, 0, 0);
-                attack(attackTarget, 10);
-                return;
-            }
-            else
-            {
-                SetVelocity(attackTarget.tokenX - this.tokenX, attackTarget.tokenY - this.tokenY, 1);
-                return;
+                if (opponentTeam.TeamMember.Count() == 0) { return; }
+                var attackTarget = chooseAttackTarget(opponentTeam.TeamMember, this);
+                if (getDistanceSqToOpponent(attackTarget) < 10)
+                {
+                    SetVelocity(1, 0, 0);
+                    attack(attackTarget, 10);
+                    return;
+                }
+                else
+                {
+                    SetVelocity(attackTarget.tokenX - this.tokenX, attackTarget.tokenY - this.tokenY, 1);
+                    return;
+                }
             }
         }
-    }
-    public override void attack(Character character, float attackPoint)
+        public override Character AttackTarget
+        {
+            get() =
+            set(Character character) =
+        }
+    public override void attack(Character character)
     {
         if (Random.Range(1, 10) == 1) { Houtyou.Add(this, character); }
         var hpdayo = character.hp;
-        character.hp = hpdayo - attackPoint;
-    }
-
-    public override Character chooseAttackTarget(List<Character> teamMates, Character chara)
-    {
-        var xyn_c = new gagoiruComparer(chara);
-        var teamMates_xyn = new List<Character>(teamMates);
-        teamMates_xyn.Sort(xyn_c);
-        var chosen = teamMates_xyn[0];
-        return chosen;
+        character.hp = hpdayo - 5;
     }
 
     public class gagoiruComparer : IComparer<Character>
@@ -61,4 +62,5 @@ public class Gagoiru : Character
             return 1;
         }
     }
+}
 }

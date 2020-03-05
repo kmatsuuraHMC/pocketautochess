@@ -3,15 +3,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <!--a -->
     <Compile Include="src/GameObject/Token/TokenF.fs" />
+    <Compile Include="src/GameObject/Token/GlobalState.fs"/>
+    <Compile Include="src/GameObject/Token/BackBoard.fs"/>
+    <Compile Include="src/GameObject/Token/TeamF.fs" />
     <Compile Include="src/GameObject/Token/Vector3.fs" />
-    <Compile Include="Library.fs" />
+    <Compile Include="src/GameObject/Token/Explosion.fs" />
+    <Compile Include="src/GameObject/Token/Gagoiru.fs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>../Library/ScriptAssemblies/Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>./Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

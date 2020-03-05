@@ -4,12 +4,19 @@ open UnityEngine
 open Vector3Util.OperatorV2
 open Vector3Util.OperatorV3
 
-type TokenF() =
+type Token() =
     inherit MonoBehaviour()
     let _renderer: SpriteRenderer = null
     let _rigidbody2D: Rigidbody2D = null
     let _width: float32 = 0.0f
     let _height: float32 = 0.0f
+    let mutable _prefab: GameObject = null
+
+    let CreateInstance(prefab: GameObject, p, name) =
+        let mutable g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
+        let obj = g.GetComponent<GameObject>()
+        g.name <- name
+        obj
 
     member this.tokenX
         with get () = this.transform.position.x
@@ -99,21 +106,29 @@ type TokenF() =
         let (min, max, pos) = (this.GetWorldMin(None), this.GetWorldMax(None), this.transform.position)
         (pos.x < min.x || pos.y < min.y) || (pos.x > max.x || pos.y > max.y)
 
-module tokenf =
-    let CreateInstance<'Type when 'Type :> TokenF>(prefab: GameObject, p, name) =
-        let mutable g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
-        let obj: 'Type = g.GetComponent<'Type>()
-        g.name <- name
-        obj
+    member this.Prefab
+        with get () = _prefab
+        and set (hoge) = _prefab <- hoge
 
-    let GetPrefab name =
-        let mutable prefab = null
+    member this.CreateInstance2(x, y, name) =
+        let pos = Vector3(x, y, 0.0f)
+        CreateInstance(this.Prefab, pos, name)
+
+module tokenUtil =
+    let GetPrefab(prefab, name) =
         match prefab with
-        | null ->
-            prefab <- Resources.Load("Prefabs/" + name) :?> GameObject
-            null
+        | null -> Resources.Load("Prefabs/" + name) :?> GameObject
         | _ -> prefab
 
-    let CreateInstance2<'Type when 'Type :> TokenF>(prefab: GameObject, x, y, name) =
-        let pos = Vector3(x, y, 0.0f)
-        CreateInstance<'Type>(prefab, pos, name)
+    let giveTokenChartAndName (prefab, chartX, chartY, name) =
+        let token = Token()
+        token.Prefab <- prefab
+        token.tokenX <- chartX
+        token.tokenY <- chartY
+        token.name <- name
+        token
+
+    let getDistanceSq (token1: Token, token2: Token) =
+        let X = token1.tokenX - token2.tokenX
+        let Y = token1.tokenY - token2.tokenY
+        X * X + Y * Y
