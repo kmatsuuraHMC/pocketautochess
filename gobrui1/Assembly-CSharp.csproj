@@ -54,10 +54,11 @@
      <Compile Include="Assets\Scripts\Util\Utilities\MathUtil.cs" />
      <Compile Include="Assets\Scripts\team\Explosion.cs" />
      <Compile Include="Assets\Scripts\team\Gagoiru.cs" />
-     <Compile Include="Assets\Scripts\team\GameObject\BackBoard.cs" />
      <Compile Include="Assets\Scripts\team\GameObject\Board1.cs" />
      <Compile Include="Assets\Scripts\team\GameObject\Board2.cs" />
+     <Compile Include="Assets\Scripts\team\GameObject\BoardController.cs" />
      <Compile Include="Assets\Scripts\team\GameObject\GameMgr.cs" />
+     <Compile Include="Assets\Scripts\team\GameObject\GlobalState.cs" />
      <Compile Include="Assets\Scripts\team\Gobrui.cs" />
      <Compile Include="Assets\Scripts\team\Houtyou.cs" />
      <Compile Include="Assets\Scripts\team\Maruta.cs" />

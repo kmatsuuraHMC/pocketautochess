@@ -7,7 +7,7 @@
 
     public class Gagoiru : GagoiruF.Gagoiru
     {
-        public Gagoiru (GameObject prefab,Team myteam, Team OppTeam, int charanum) : base (prefab,myteam,OppTeam,charanum){}
+        public Gagoiru () : base (){}
         //     public Gagoiru(GameObject _gameObject, Team _myTeam, Team _opponentTeam, S.IntPtr _charaNum, float _hp) : base(_gameObject, _myTeam, _opponentTeam, _charaNum, _hp) { }
         //     private void Start()
         //     {

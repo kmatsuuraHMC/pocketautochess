@@ -13,12 +13,6 @@ type Token() =
     let _height: float32 = 0.0f
     let mutable _prefab: GameObject = null
 
-    let CreateInstance(prefab: GameObject, p, name) =
-        let mutable g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
-        let obj = g.GetComponent<GameObject>()
-        g.name <- name
-        obj
-
     member this.tokenX
         with get () = this.transform.position.x
         and set value =
@@ -111,9 +105,16 @@ type Token() =
         with get () = _prefab
         and set (hoge) = _prefab <- hoge
 
-    member this.CreateInstance2(x, y, name) =
+    static member CreateInstance2(x, y, name) =
+        let prefab = null
         let pos = Vector3(x, y, 0.0f)
-        CreateInstance(this.Prefab, pos, name)
+
+        let createInstance (prefab: GameObject, p, name) =
+            let mutable g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
+            let obj = g.GetComponent<GameObject>()
+            g.name <- name
+            obj
+        box (createInstance (prefab, pos, name)) :?> Token
 
 module tokenUtil =
     let GetPrefab(prefab, name) =

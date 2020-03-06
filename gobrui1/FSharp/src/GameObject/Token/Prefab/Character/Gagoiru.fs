@@ -2,9 +2,10 @@ namespace GagoiruF
 
 open TeamF
 open TokenF.tokenUtil
+open TeamF.charaUtil
 
-type Gagoiru(_gameObject, _myTeam, _opponentTeam, _charaNum) =
-    inherit Character(_gameObject, _myTeam, _opponentTeam, _charaNum, 3000.0f)
+type Gagoiru() =
+    inherit Character()
 
     override this.attack attacktarget = attacktarget.hp <- attacktarget.hp - 5.0f
     override this.BattlePerF =

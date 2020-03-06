@@ -10,10 +10,10 @@ open System.Threading
 type Explosion() =
     inherit Token()
     member this.StartAt: Async<Unit> =
-        this.CreateInstance2(this.tokenX, this.tokenY, "explosion") |> ignore
+        Token.CreateInstance2(this.tokenX, this.tokenY, "explosion") |> ignore
         async {
             while (this.ScaleX > 0.01f) do
-                do! Async.AwaitTask (Task.Delay 10)
+                do! Async.AwaitTask(Task.Delay 10)
                 // だんだん小さくするf
                 this.MulScale(0.9f)
             Debug.Log("hoge")
@@ -44,5 +44,7 @@ type Explosion() =
 //         }
 //         // 消滅
 //         DestroyObj();
+//     }
+// }
 //     }
 // }
