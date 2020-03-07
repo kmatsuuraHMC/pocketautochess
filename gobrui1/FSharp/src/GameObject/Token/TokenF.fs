@@ -3,6 +3,8 @@ namespace TokenF
 open UnityEngine
 open Vector3Util.OperatorV2
 open Vector3Util.OperatorV3
+open PrefabCount
+open PrefabCountUtil
 
 type Token() =
     inherit MonoBehaviour()
@@ -47,7 +49,7 @@ type Token() =
 
     member this.DestroyObj() = GameObject.Destroy(this.gameObject)
 
-    member this.MulScale(d: float32): Unit = this.transform.localScale <- d  @@* this.transform.localScale //d
+    member this.MulScale(d: float32): Unit = this.transform.localScale <- d @@* this.transform.localScale //d
 
     member this.MulVelocity(d: float32): Unit = this.RigidBody.velocity <- d @* this.RigidBody.velocity
 
@@ -106,9 +108,9 @@ type Token() =
 
 module tokenUtil =
 
-    let GetPrefab prefab name =
+    let GetPrefab prefab race =
         match prefab with
-        | null -> Resources.Load("Prefabs/" + name) :?> GameObject
+        | null -> Resources.Load("Prefabs/" + (toPrefabName race)) :?> GameObject
         | _ -> prefab
 
     let CreateInstance<'Type when 'Type :> Token>(prefab: GameObject, p: Vector3, name: string): 'Type =

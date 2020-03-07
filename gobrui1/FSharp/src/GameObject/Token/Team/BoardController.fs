@@ -8,11 +8,13 @@ open TurnCount
 open DeployCount
 open TokenF
 open tokenUtil
+open PrefabCount
 
 type BoardController() =
     inherit Token()
     static let mutable turn = TurnCount.deploy
     static let mutable deploy = DeployCount.none
+    static let mutable prefab = PrefabCount.Gobrui
 
     static member Turn
         with get (): TurnCount = turn
@@ -21,6 +23,17 @@ type BoardController() =
     static member Deploy
         with get (): DeployCount = deploy
         and set (v) = deploy <- v
+
+    static member Prefab
+        with get () = prefab
+        and set v = prefab <- v
+
+    static member PrefabName =
+        match prefab with
+        | PrefabCount.Gagoiru -> "Gagoiru"
+        | PrefabCount.Gobrui -> "Gobrui"
+        | PrefabCount.Maruta -> "Maruta"
+        | _ -> "Gobrui"
 
 and Board1(boardController) =
     inherit Token()

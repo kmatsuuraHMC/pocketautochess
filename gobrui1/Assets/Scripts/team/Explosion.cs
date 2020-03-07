@@ -4,55 +4,34 @@ using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
 using UniRx.Async;
+using System.Collections;
 /// パーティクル
 public class Explosion : ExplosionF.Explosion
 {
+    public async void Start()
+    {
+        await Move();
 
-    public float tokenX
-    {
-        set
-        {
-            Vector3 pos = transform.position;
-            pos.x = value;
-            transform.position = pos;
-        }
-        get { return transform.position.x; }
-    }
-    public float xnosukeru
-    {
-        get
-        {
-            return this.transform.localScale.x;
-        }
-        set
-        {
-            Vector3 scale = transform.localScale;
-            scale.x = value;
-        }
+        Debug.Log("Done!");  // Move() の処理完了後に実行される
     }
 
-    public float ynosuke
+    private async UniTask Move()
     {
-        get
-        {
-            return this.transform.localScale.y;
-        }
-        set
-        {
-            var scale = transform.localScale;
-            scale.y = value;
-            this.transform.localScale = scale;
-        }
-    }
-    // public async void Start()
-    // {
-        // await UniTask.Run(() =>
-        // {
-        //     while (true)
-        //     {
-        //         this.ynosuke = this.ynosuke * 0.01f;
-        //     }
 
-        // });
-    // }
+        float speed = 1f;
+        float duration = 3f;
+        var startTime = Time.time;
+
+        // 待機時間（UniTask.Delay に変換。 引数にはミリ秒の int を指定する）
+        var span = UniTask.Delay((int)(50));
+
+        span.GetAwaiter();
+
+        while (this.ScaleX > 0.01f)
+        {
+            this.MulScale(0.9f);
+            await span;       // 一歩ごとに待機
+        }
+        this.DestroyObj();
+    }
 }

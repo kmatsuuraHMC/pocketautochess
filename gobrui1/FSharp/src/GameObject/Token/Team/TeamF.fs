@@ -4,11 +4,13 @@ open UnityEngine
 open FSharp.Core
 open TokenF
 open tokenUtil
+open PrefabCount
+open PrefabCount
 
 [<AbstractClass>]
 type Character() =
     inherit Token()
-    let mutable _myTeam, _opponentTeam, _charaNum, _hp, _race = Team(), Team(), 0, 0.0f, ""
+    let mutable _myTeam, _opponentTeam, _charaNum, _hp, _race = Team(), Team(), 0, 0.0f, PrefabCount.Gobrui
 
     member this.myTeam
         with get () = _myTeam
@@ -27,7 +29,7 @@ type Character() =
         and set hp = _hp <- hp
 
     member this.race
-        with get () = _race
+        with get (): PrefabCount = _race
         and set v = _race <- v
 
     abstract attack: Character -> Unit
@@ -55,9 +57,10 @@ and Team() =
             i.BattlePerF
 
 module charaUtil =
-    let addCharacter<'T when 'T :> Character> (chartX, chartY, _myTeam, _opponentTeam, _race, _hp, _charaNum) =
+    let addCharacter<'T when 'T :> Character> (chartX, chartY, _myTeam, _opponentTeam, _race, _charaNum, _name, _hp) =
+
         let prefab = GetPrefab null _race
-        let hoge = CreateInstance2<'T>(prefab, chartX, chartY, _race)
+        let hoge = CreateInstance2<'T>(prefab, chartX, chartY, _name)
         hoge.hp <- _hp
         hoge.myTeam <- _myTeam
         hoge.opponentTeam <- _opponentTeam

@@ -2,7 +2,6 @@ namespace GlobalStateF
 // ココらへん、制御構造を書き直す必要がある
 open UnityEngine
 open TeamF
-open TokenF
 open TurnCount
 open DeployCount
 open BoardsF
@@ -10,10 +9,9 @@ open Vector3Util
 open OperatorV2
 open OperatorV3
 open GagoiruF
-open charaUtil
-open System
-open Microsoft.FSharp.Linq
-open tokenUtil
+open GobruiF
+open MarutaF
+open PrefabCount
 
 
 type GlobalState() =
@@ -29,6 +27,9 @@ type GlobalState() =
     member this.Start = ()
 
     member this.UpdateFunc =
+        if (Input.GetKey(KeyCode.A)) then BoardController.Prefab <- PrefabCount.Gobrui
+        if (Input.GetKey(KeyCode.S)) then BoardController.Prefab <- PrefabCount.Maruta
+        if (Input.GetKey(KeyCode.D)) then BoardController.Prefab <- PrefabCount.Gagoiru
         match BoardController.Turn with
         | TurnCount.deploy ->
             point2 <- toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
@@ -57,11 +58,13 @@ type GlobalState() =
                                 if BoardController.Deploy = DeployCount.team1
                                 then Team2
                                 else Team1
-                            Debug.Log("Turn:hogehoge" + BoardController.Deploy.ToString("d"))
                             let addingCharacter =
-                                (addCharacter<Gagoiru>
-                                    (point2.x, point2.y, myteam, opponentTeam, "Gagoiru", 3000.0f,
-                                     myteam.TeamMember.Length)) :> Character
+                                let prop = (point1.x, point1.y, myteam, opponentTeam, myteam.TeamMember.Length)
+                                match BoardController.Prefab with
+                                | PrefabCount.Gobrui -> Gobrui.Add prop
+                                | PrefabCount.Gagoiru -> Gagoiru.Add prop
+                                | PrefabCount.Maruta -> Maruta.Add prop
+                                | _ -> Gobrui.Add prop
                             myteam.Add(addingCharacter)
                             if min Team1.TeamMember.Length Team2.TeamMember.Length > 30 then
                                 BoardController.Turn <- TurnCount.battle
