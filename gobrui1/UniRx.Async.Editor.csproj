@@ -45,9 +45,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Util\Utilities\UniTask-1.2.0\Assets\UniRx.Async\Editor\SplitterGUILayout.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\UniTask-1.2.0\Assets\UniRx.Async\Editor\UniTaskTrackerTreeView.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\UniTask-1.2.0\Assets\UniRx.Async\Editor\UniTaskTrackerWindow.cs" />
+     <Compile Include="Assets\UniRx.Async\Editor\SplitterGUILayout.cs" />
+     <Compile Include="Assets\UniRx.Async\Editor\UniTaskTrackerTreeView.cs" />
+     <Compile Include="Assets\UniRx.Async\Editor\UniTaskTrackerWindow.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

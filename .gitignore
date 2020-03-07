@@ -14,4 +14,6 @@ gobrui1/Temp/
 gobrui1/temp/
 gobrui1/.ionide/
 gobrui1/UniTask-1.2.0.tar.gz
-gobrui1/Assets/Scripts/lib
+gobrui1/Assets/Plugins/
+gobrui1/Assets/UniRx.Async/
+UniTask-1.2.0/

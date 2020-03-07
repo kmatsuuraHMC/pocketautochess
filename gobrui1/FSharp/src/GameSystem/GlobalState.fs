@@ -57,7 +57,7 @@ type GlobalState() =
                                 if BoardController.Deploy = DeployCount.team1
                                 then Team2
                                 else Team1
-
+                            Debug.Log("Turn:hogehoge" + BoardController.Deploy.ToString("d"))
                             let addingCharacter =
                                 (addCharacter<Gagoiru>
                                     (point2.x, point2.y, myteam, opponentTeam, "Gagoiru", 3000.0f,

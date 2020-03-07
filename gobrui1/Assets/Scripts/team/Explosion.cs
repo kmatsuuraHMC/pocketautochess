@@ -3,7 +3,7 @@ using Microsoft.FSharp.Core;
 using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
-
+using UniRx.Async;
 /// パーティクル
 public class Explosion : ExplosionF.Explosion
 {
@@ -44,15 +44,15 @@ public class Explosion : ExplosionF.Explosion
             this.transform.localScale = scale;
         }
     }
-    public async void Start()
-    {
-        await Task.Run(() =>
-        {
-            while (true)
-            {
-                this.ynosuke = this.ynosuke * 0.01f;
-            }
+    // public async void Start()
+    // {
+        // await UniTask.Run(() =>
+        // {
+        //     while (true)
+        //     {
+        //         this.ynosuke = this.ynosuke * 0.01f;
+        //     }
 
-        });
-    }
+        // });
+    // }
 }
