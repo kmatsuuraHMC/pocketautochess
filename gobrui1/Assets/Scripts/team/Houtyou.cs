@@ -3,7 +3,7 @@ using System.Collections;
 using S = System;
 
 /// パーティクル
-public class Houtyou 
+public class Houtyou   
 {
     // static GameObject _prefab = null;
     // /// パーティクルの生成

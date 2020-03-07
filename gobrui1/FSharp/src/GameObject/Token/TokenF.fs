@@ -48,7 +48,7 @@ type Token() =
 
     member this.DestroyObj() = GameObject.Destroy(this.gameObject)
 
-    member this.MulScale(d: float32): Unit = this.transform.localScale <- d @@* this.transform.localScale
+    member this.MulScale(d: float32): Unit = this.transform.localScale <- d  @@* this.transform.localScale //d
 
     member this.MulVelocity(d: float32): Unit = this.RigidBody.velocity <- d @* this.RigidBody.velocity
 
@@ -105,22 +105,23 @@ type Token() =
         with get () = _prefab
         and set (hoge) = _prefab <- hoge
 
-    static member CreateInstance2(x, y, name) =
-        let prefab = null
-        let pos = Vector3(x, y, 0.0f)
-
-        let createInstance (prefab: GameObject, p, name) =
-            let mutable g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
-            let obj = g.GetComponent<GameObject>()
-            g.name <- name
-            obj
-        box (createInstance (prefab, pos, name)) :?> Token
-
 module tokenUtil =
-    let GetPrefab(prefab, name) =
+
+    let GetPrefab prefab name =
         match prefab with
         | null -> Resources.Load("Prefabs/" + name) :?> GameObject
         | _ -> prefab
+
+    let CreateInstance<'Type when 'Type :> Token>(prefab: GameObject, p: Vector3, name: string): 'Type =
+        let g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
+        let obj: 'Type = g.GetComponent<'Type>()
+        g.name <- name
+        obj
+
+    let CreateInstance2<'Type when 'Type :> Token>(prefab: GameObject, x, y, name) =
+        let pos = Vector3(x, y, 0.0f)
+        let g = CreateInstance<'Type>(prefab, pos, name)
+        g
 
     let giveTokenChartAndName (prefab, chartX, chartY, name) =
         let token = Token()

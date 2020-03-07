@@ -9,15 +9,20 @@ open System.Threading
 /// パーティクル
 type Explosion() =
     inherit Token()
-    member this.StartAt: Async<Unit> =
-        Token.CreateInstance2(this.tokenX, this.tokenY, "explosion") |> ignore
-        async {
-            while (this.ScaleX > 0.01f) do
-                do! Async.AwaitTask(Task.Delay 10)
-                // だんだん小さくするf
-                this.MulScale(0.9f)
-            Debug.Log("hoge")
-        }
+
+    member this.StartFunc =
+        new Task(fun () ->
+        Debug.Log("hoge")
+        this.MulScale(0.3f)
+        while (true) do
+            this.DestroyObj()
+            Debug.Log("Fuga")
+            this.MulScale(0.3f)
+        )
+    // だんだん小さくするf
+
+    static member Add(opponent: Token) =
+        tokenUtil.CreateInstance2(null, opponent.tokenX, opponent.tokenY, "explosion") |> ignore
 
 //     /// パーティクルの生成
 //     public static Explosion Add(Character opponent)

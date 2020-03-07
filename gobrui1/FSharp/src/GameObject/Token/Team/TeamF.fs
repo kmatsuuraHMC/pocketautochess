@@ -55,13 +55,12 @@ and Team() =
             i.BattlePerF
 
 module charaUtil =
-    let addCharacter (chartX, chartY, _myTeam, _opponentTeam, _race, _hp, _charaNum): Character =
-        let prefab = box (GetPrefab(null, _race)) :?> Character
-        prefab.tokenX <- chartX
-        prefab.tokenY <- chartY
-        prefab.hp <- _hp
-        prefab.myTeam <- _myTeam
-        prefab.opponentTeam <- _opponentTeam
-        prefab.number <- _charaNum
-        prefab.race <- _race
-        prefab
+    let addCharacter<'T when 'T :> Character> (chartX, chartY, _myTeam, _opponentTeam, _race, _hp, _charaNum) =
+        let prefab = GetPrefab null _race
+        let hoge = CreateInstance2<'T>(prefab, chartX, chartY, _race)
+        hoge.hp <- _hp
+        hoge.myTeam <- _myTeam
+        hoge.opponentTeam <- _opponentTeam
+        hoge.number <- _charaNum
+        hoge.race <- _race
+        hoge
