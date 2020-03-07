@@ -240,8 +240,14 @@
  <Reference Include="UnityEditor.LinuxStandalone.Extensions">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="FSharp.Core">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
+ </Reference>
+ <Reference Include="FSharp">
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Assets/Plugins/FSharp.dll</HintPath>
+ </Reference>
  <Reference Include="nunit.framework">
- <HintPath>/home/takaki/Documents/unityMoveed/gobrui1/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

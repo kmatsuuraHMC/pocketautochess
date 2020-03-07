@@ -1,0 +1,1 @@
+git@github.com:fsprojects/FSharpx.Extras.git
