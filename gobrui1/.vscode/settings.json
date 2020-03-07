@@ -41,6 +41,7 @@
         "**/*.flare":true,
         "**/*.mat":true,
         "**/*.meta":true,
+        "**/*.cs.meta":true,
         "**/*.prefab":true,
         "**/*.unity":true,
         "build/":true,
@@ -51,6 +52,7 @@
         "Obj/":true,
         "ProjectSettings/":true,
         "temp/":true,
-        "Temp/":true
+        "Temp/":true,
+        "Assets/UniRx.Async/":true,
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7872521870779595611}
   - component: {fileID: -7949631370883786327}
   - component: {fileID: 4603325324191499766}
-  - component: {fileID: -5730578382713700170}
+  - component: {fileID: 1963223387213130692}
   m_Layer: 0
   m_Name: Gagoiru
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2816297236928546371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.849, y: 0.219, z: 0}
-  m_LocalScale: {x: 0.261, y: 0.27, z: 1}
+  m_LocalPosition: {x: 0.684, y: 0.0623, z: 0}
+  m_LocalScale: {x: 0.114318, y: 0.13073401, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-5730578382713700170
+--- !u!114 &1963223387213130692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +140,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2816297236928546371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 844902280, guid: 1833c88a74d18fb919f3fb97adadfd5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 28307b5a4957c46b8919c1f710e3cdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -16,13 +16,10 @@ open PrefabCount
 
 type GlobalState() =
     inherit MonoBehaviour()
-    let mutable number1, number2 = 0, 0
     let mutable point1, point2 = Vector2(0.0f, 0.0f), Vector2(0.0f, 0.0f)
-    let mutable boardControllerBox = None
     let mutable Team1 = Team()
     let mutable Team2 = Team()
     let MAX_UNIT = 30
-    let race = "Gagoiru"
 
     member this.Start = ()
 
@@ -35,7 +32,6 @@ type GlobalState() =
             point2 <- toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
             if (distBtwV2Sq point1 point2 > 1.0f) then
                 point1 <- point2
-                Debug.Log("Turn:" + BoardController.Deploy.ToString("d"))
                 let whichNumber =
                     match BoardController.Deploy with
                     | DeployCount.team1 -> Team1.TeamMember.Length
@@ -58,6 +54,7 @@ type GlobalState() =
                                 if BoardController.Deploy = DeployCount.team1
                                 then Team2
                                 else Team1
+
                             let addingCharacter =
                                 let prop = (point1.x, point1.y, myteam, opponentTeam, myteam.TeamMember.Length)
                                 match BoardController.Prefab with
@@ -65,11 +62,12 @@ type GlobalState() =
                                 | PrefabCount.Gagoiru -> Gagoiru.Add prop
                                 | PrefabCount.Maruta -> Maruta.Add prop
                                 | _ -> Gobrui.Add prop
-                            myteam.Add(addingCharacter)
+
+                            myteam.Add addingCharacter
                             if min Team1.TeamMember.Length Team2.TeamMember.Length > 30 then
                                 BoardController.Turn <- TurnCount.battle
         | TurnCount.battle ->
-            if (Team1.TeamMember.Length + Team2.TeamMember.Length > 0) then
+            if min Team1.TeamMember.Length Team2.TeamMember.Length > 0 then
                 Team1.BattlePerF
                 Team2.BattlePerF
             else

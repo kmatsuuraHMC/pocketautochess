@@ -1,4 +1,4 @@
-namespace ExplosionF
+namespace CheeseF
 
 open UnityEngine
 open TokenF
@@ -12,7 +12,7 @@ open System.Collections
 open UniRx.Async
 
 /// パーティクル
-type Explosion() =
+type Cheese() =
     inherit Token()
     let mutable i = 0
 
@@ -20,9 +20,9 @@ type Explosion() =
         with get () = i
         and set v = i <- v
 
-    member this.StartFunc = this.ShrinkOut 0.8f
+    member this.StartFunc = this.ShrinkOut 0.7f
 
     static member Add(attacktarget: Character) =
-        let prefab = GetPrefab null PrefabCount.Explosion
-        let expro = CreateInstance2<Explosion>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Explosion")
+        let prefab = GetPrefab null PrefabCount.Cheese
+        let expro = CreateInstance2<Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese")
         expro

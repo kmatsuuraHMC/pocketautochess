@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6959122028326822714}
   - component: {fileID: 2255518153213862546}
   - component: {fileID: 2019993604590377011}
-  - component: {fileID: -7815845168084645415}
+  - component: {fileID: -4042491784310186423}
   m_Layer: 8
   m_Name: Board2
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.8, y: 8.53}
   m_EdgeRadius: 0
---- !u!114 &-7815845168084645415
+--- !u!114 &-4042491784310186423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +140,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5104501537236951846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -443513320, guid: 1833c88a74d18fb919f3fb97adadfd5a, type: 3}
+  m_Script: {fileID: 11500000, guid: eeb4bf247637e2d768595d8a4d8aebb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

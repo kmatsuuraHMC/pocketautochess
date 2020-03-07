@@ -44,9 +44,7 @@ and Board1(boardController) =
         and set v = boardController <- v
 
     member this.OnMouseDownFunc =
-        Debug.Log("1tokenDown")
         if BoardController.Turn = TurnCount.deploy then
-            Debug.Log("1tokenDown2")
             BoardController.Deploy <- DeployCount.team1
 
     member this.OnMouseUpFunc =
@@ -64,9 +62,7 @@ and Board2(boardController) =
     let mutable boardController: BoardController = boardController
 
     member this.OnMouseDownFunc =
-        Debug.Log("2tokenDown")
         if BoardController.Turn = TurnCount.deploy then
-            Debug.Log("2tokenDown")
             BoardController.Deploy <- DeployCount.team2
 
     member this.OnMouseUpFunc =

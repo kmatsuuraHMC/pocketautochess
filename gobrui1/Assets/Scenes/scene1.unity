@@ -139,6 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a6d97fc28c8ffeea0ccbf65fc9b72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderer: {fileID: 0}
+  _rigidbody2D: {fileID: 0}
+  _width: 0
+  _height: 0
+  _prefab: {fileID: 0}
+  boardController@40: {fileID: 0}
 --- !u!1001 &1262419598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,12 +165,12 @@ PrefabInstance:
     - target: {fileID: 6407237201056083345, guid: bb6405fb646bd5bd49fd91ed33b50a68,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.938
+      value: 4.248
       objectReference: {fileID: 0}
     - target: {fileID: 6407237201056083345, guid: bb6405fb646bd5bd49fd91ed33b50a68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.28
+      value: -0.128
       objectReference: {fileID: 0}
     - target: {fileID: 6407237201056083345, guid: bb6405fb646bd5bd49fd91ed33b50a68,
         type: 3}
@@ -222,7 +228,7 @@ PrefabInstance:
       value: 1.3386244
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: -7815845168084645415, guid: bb6405fb646bd5bd49fd91ed33b50a68, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: bb6405fb646bd5bd49fd91ed33b50a68, type: 3}
 --- !u!1 &1364757488
 GameObject:
@@ -325,6 +331,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de49aee4824937cdb55f0e4db4fdb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderer: {fileID: 0}
+  _rigidbody2D: {fileID: 0}
+  _width: 0
+  _height: 0
+  _prefab: {fileID: 0}
+  boardController@62: {fileID: 0}
 --- !u!1001 &1888988626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,7 +415,7 @@ PrefabInstance:
       value: Board1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: -7928391218292529519, guid: b48c870b372b244f9a1877d90f676c62, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b48c870b372b244f9a1877d90f676c62, type: 3}
 --- !u!1001 &2602935223974574735
 PrefabInstance:

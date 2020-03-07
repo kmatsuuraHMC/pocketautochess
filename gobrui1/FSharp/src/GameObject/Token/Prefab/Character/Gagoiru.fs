@@ -4,6 +4,7 @@ open TeamF
 open TokenF.tokenUtil
 open TeamF.charaUtil
 open ExplosionF
+open HoutyouF
 open UnityEngine
 open UniRx.Async
 open PrefabCount
@@ -13,12 +14,13 @@ open charaUtil
 type Gagoiru() =
     inherit Character()
     static let defaultHp = 3000.0f
+    static let defaultSpeed = 3.0f
+    static let defautlRange = 6.0f
+    static let defaultAttack = 20.0f
 
     override this.attack attacktarget =
-        attacktarget.hp <- attacktarget.hp - 5.0f
-        if (Random.Range(1, 10) = 1) then
-            let prefab = GetPrefab null PrefabCount.Explosion
-            CreateInstance2<Explosion>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Explosion") |> ignore
+        attacktarget.hp <- attacktarget.hp - defaultAttack
+        if (Random.Range(1, 10) = 1) then Houtyou.Add this attacktarget |> ignore
 
     override this.BattlePerF =
         if this.hp < 0.0f then
@@ -28,11 +30,11 @@ type Gagoiru() =
         let target = this.AttackTarget
         if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false
         if i then
-            if (getDistanceSq (this, target) < 10.0f) then
+            if (getDistanceSq (this, target) < defautlRange * defautlRange) then
                 this.SetVelocity(1.0f, 0.0f, 0.0f)
                 this.attack target
             else
-                this.SetVelocity(target.tokenX - this.tokenX, target.tokenY - this.tokenY, 50.0f)
+                this.SetVelocity(target.tokenX - this.tokenX, target.tokenY - this.tokenY, defaultSpeed)
 
     static member Add =
         fun (x, y, my, opponent, num) ->

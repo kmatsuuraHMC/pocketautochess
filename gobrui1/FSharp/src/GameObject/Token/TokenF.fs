@@ -3,6 +3,7 @@ namespace TokenF
 open UnityEngine
 open Vector3Util.OperatorV2
 open Vector3Util.OperatorV3
+open System.Collections
 open PrefabCount
 open PrefabCountUtil
 
@@ -98,6 +99,19 @@ type Token() =
             scale.y <- v
             this.transform.localScale <- scale
 
+    member this.GetDirection(opponent: Token) =
+        let x, y = (opponent.tokenX - this.tokenX), (opponent.tokenY - this.tokenY)
+        let Dsq = x * x + y * y
+        (x / Dsq, y / Dsq)
+
+    member this.ShrinkOut mulscale =
+        seq {
+            while this.ScaleX > 0.01f do
+                this.MulScale(mulscale)
+                yield WaitForSeconds(0.01f)
+            this.DestroyObj()
+        } :?> IEnumerator
+
     member this.IsOutside =
         let (min, max, pos) = (this.GetWorldMin(None), this.GetWorldMax(None), this.transform.position)
         (pos.x < min.x || pos.y < min.y) || (pos.x > max.x || pos.y > max.y)
@@ -108,9 +122,9 @@ type Token() =
 
 module tokenUtil =
 
-    let GetPrefab prefab race =
+    let GetPrefab prefab prefabCount =
         match prefab with
-        | null -> Resources.Load("Prefabs/" + (toPrefabName race)) :?> GameObject
+        | null -> Resources.Load("Prefabs/" + (toPrefabName prefabCount)) :?> GameObject
         | _ -> prefab
 
     let CreateInstance<'Type when 'Type :> Token>(prefab: GameObject, p: Vector3, name: string): 'Type =
