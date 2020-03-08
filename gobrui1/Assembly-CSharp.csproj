@@ -45,29 +45,20 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Action\Lookat2D.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\CharaUtil.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\EventTest.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\GetPrefabs.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\GetSprite.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Board\Board1.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Board\Board2.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Board\BoardController.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Character\Gagoiru.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Character\Gobrui.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Character\Maruta.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Effect\Cheese.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Effect\Explosion.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Effect\Houtyou.cs" />
+     <Compile Include="Assets\Scripts\GameObject\Prefab\Effect\Particle.cs" />
+     <Compile Include="Assets\Scripts\GameSystem\GameMgr.cs" />
+     <Compile Include="Assets\Scripts\GameSystem\GlobalState.cs" />
      <Compile Include="Assets\Scripts\Util\Utilities\GuiUtil.cs" />
-     <Compile Include="Assets\Scripts\Util\Utilities\MathUtil.cs" />
-     <Compile Include="Assets\Scripts\fsTes\tes.cs" />
-     <Compile Include="Assets\Scripts\team\Character.cs" />
-     <Compile Include="Assets\Scripts\team\Explosion.cs" />
-     <Compile Include="Assets\Scripts\team\Gagoiru.cs" />
-     <Compile Include="Assets\Scripts\team\GameObject\BackBoard.cs" />
-     <Compile Include="Assets\Scripts\team\GameObject\Board1.cs" />
-     <Compile Include="Assets\Scripts\team\GameObject\Board2.cs" />
-     <Compile Include="Assets\Scripts\team\GameObject\GameMgr.cs" />
-     <Compile Include="Assets\Scripts\team\Gobrui.cs" />
-     <Compile Include="Assets\Scripts\team\Houtyou.cs" />
-     <Compile Include="Assets\Scripts\team\Maruta.cs" />
-     <Compile Include="Assets\Scripts\team\Particle.cs" />
-     <Compile Include="Assets\Scripts\team\Team.cs" />
-     <Compile Include="Assets\Scripts\team\Testscript.cs" />
-     <Compile Include="Assets\Scripts\team\Token.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -249,10 +240,10 @@
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="FSharp.Core">
- <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
+ <HintPath>/home/takaki/Documents/unityMoveed/hogehoge/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
  </Reference>
  <Reference Include="FSharp">
- <HintPath>/home/takaki/Documents/unityMoveed/pocketautochess/gobrui1/Assets/Plugins/FSharp.dll</HintPath>
+ <HintPath>/home/takaki/Documents/unityMoveed/hogehoge/pocketautochess/gobrui1/Assets/Plugins/FSharp.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
