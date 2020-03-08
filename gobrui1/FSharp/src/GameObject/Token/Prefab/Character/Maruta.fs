@@ -5,7 +5,6 @@ open TokenF.tokenUtil
 open TeamF.charaUtil
 open ExplosionF
 open UnityEngine
-open UniRx.Async
 open PrefabCount
 open charaUtil
 
@@ -27,9 +26,6 @@ type Maruta() =
 
 
     override this.BattlePerF =
-        if this.hp < 0.0f then
-            this.myTeam.DeleteTeamMember this
-            this.DestroyObj()
         let mutable i = true
         if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false
         let target = this.AttackTarget

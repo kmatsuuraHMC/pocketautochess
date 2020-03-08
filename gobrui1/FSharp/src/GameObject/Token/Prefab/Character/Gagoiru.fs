@@ -6,7 +6,6 @@ open TeamF.charaUtil
 open ExplosionF
 open HoutyouF
 open UnityEngine
-open UniRx.Async
 open PrefabCount
 open PrefabCountUtil
 open charaUtil
@@ -23,9 +22,6 @@ type Gagoiru() =
         if (Random.Range(1, 10) = 1) then Houtyou.Add this attacktarget |> ignore
 
     override this.BattlePerF =
-        if this.hp < 0.0f then
-            this.myTeam.DeleteTeamMember this
-            this.DestroyObj()
         let mutable i = true
         let target = this.AttackTarget
         if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false

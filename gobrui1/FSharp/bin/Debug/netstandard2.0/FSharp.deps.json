@@ -13,7 +13,6 @@
           "NETStandard.Library": "2.0.3",
           "System.Numerics.Vectors": "4.1.3.0",
           "System.Runtime.InteropServices.WindowsRuntime": "4.0.0.0",
-          "UniRx.Async": "0.0.0.0",
           "UnityEditor": "0.0.0.0",
           "UnityEngine.AccessibilityModule": "0.0.0.0",
           "UnityEngine.AIModule": "0.0.0.0",
@@ -147,14 +146,6 @@
           "System.Runtime.InteropServices.WindowsRuntime.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "1.0.24212.1"
-          }
-        }
-      },
-      "UniRx.Async/0.0.0.0": {
-        "runtime": {
-          "UniRx.Async.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -638,14 +629,6 @@
           }
         }
       },
-      "UnityEngine.UI/1.0.0.0": {
-        "runtime": {
-          "UnityEngine.UI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "UnityEngine.ARModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.ARModule.dll": {
@@ -737,11 +720,6 @@
       "sha512": ""
     },
     "System.Runtime.InteropServices.WindowsRuntime/4.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UniRx.Async/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1042,11 +1020,6 @@
       "sha512": ""
     },
     "UnityEngine.XRModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "UnityEngine.UI/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

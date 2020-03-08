@@ -54,6 +54,9 @@ and Team() =
 
     member this.BattlePerF =
         for i in teamMember do
+            if i.hp < 0.0f then
+                this.DeleteTeamMember i
+                i.DestroyObj()
             i.BattlePerF
 
 module charaUtil =

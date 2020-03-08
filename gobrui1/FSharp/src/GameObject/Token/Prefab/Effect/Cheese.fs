@@ -9,7 +9,6 @@ open System.Runtime
 open System.Threading.Tasks
 open System.Threading
 open System.Collections
-open UniRx.Async
 
 /// パーティクル
 type Cheese() =
@@ -23,6 +22,7 @@ type Cheese() =
     member this.StartFunc = this.ShrinkOut 0.7f
 
     static member Add(attacktarget: Character) =
+    /// コルーチンでフェードアウト(CSharpで設定してる)
         let prefab = GetPrefab null PrefabCount.Cheese
         let expro = CreateInstance2<Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese")
         expro

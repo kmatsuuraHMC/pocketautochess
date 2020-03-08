@@ -5,7 +5,6 @@ open TokenF.tokenUtil
 open TeamF.charaUtil
 open ExplosionF
 open UnityEngine
-open UniRx.Async
 open PrefabCount
 open charaUtil
 
@@ -23,9 +22,6 @@ type Gobrui() =
             CreateInstance2<CheeseF.Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese") |> ignore
 
     override this.BattlePerF =
-        if this.hp < 0.0f then
-            this.myTeam.DeleteTeamMember this
-            this.DestroyObj()
         let mutable i = true
         if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false
         let target = this.AttackTarget
@@ -36,6 +32,5 @@ type Gobrui() =
             else
                 this.SetVelocity(target.tokenX - this.tokenX, target.tokenY - this.tokenY, defaultSpeed)
 
-    static member Add: float32 * float32 * Team * Team * int -> Character =
-        fun (x, y, my, opponent, num) ->
-            addCharacter<Gobrui> (x, y, my, opponent, PrefabCount.Gobrui, num, "Gobruidayo", defaultHp) :> Character
+    static member Add (x, y, myTeam, opponentTeam, charaNum) =
+            addCharacter<Gobrui> (x, y, myTeam, opponentTeam, PrefabCount.Gobrui, charaNum, "Gobruidayo", defaultHp) :> Character

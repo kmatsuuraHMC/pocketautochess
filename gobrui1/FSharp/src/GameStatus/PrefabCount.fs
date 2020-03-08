@@ -18,5 +18,3 @@ module PrefabCountUtil =
         | PrefabCount.Gobrui -> "Gobrui"
         | PrefabCount.Gagoiru -> "Gagoiru"
         | PrefabCount.Maruta -> "Maruta"
-        | PrefabCount.Houtyou -> "Houtyou"
-        | _ -> "Gobrui"
