@@ -12,9 +12,9 @@ type Maruta() =
     inherit Character()
     static let defaultHp = 1500.0f
     static let defaultSpeed = 4.0f
-    static let defaultAttack = 8.0f
+    static let defaultAttack = 10.0f
     static let defaultRange = 3.0f
-    static let explosionRange = 2.5f
+    static let explosionRange = 1.0f
 
     override this.attack attacktarget =
         if (Random.Range(1, 10) = 1) then
