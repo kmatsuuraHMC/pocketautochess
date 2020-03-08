@@ -22,10 +22,8 @@ type Gobrui() =
             CreateInstance2<CheeseF.Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese") |> ignore
 
     override this.BattlePerF =
-        let mutable i = true
-        if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false
         let target = this.AttackTarget
-        if i then
+        if this.opponentTeam.TeamMember.Length <> 0 then
             if (getDistanceSq (this, target) < defaultRange * defaultRange) then
                 this.SetVelocity(1.0f, 0.0f, 0.0f)
                 this.attack target

@@ -35,6 +35,7 @@ type BoardController() =
         | PrefabCount.Maruta -> "Maruta"
         | _ -> "Gobrui"
 
+/// ターンの制御をする
 and Board1(boardController) =
     inherit Token()
     let mutable boardController: BoardController = boardController

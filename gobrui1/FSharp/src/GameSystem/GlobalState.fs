@@ -29,6 +29,8 @@ type GlobalState() =
         if (Input.GetKey(KeyCode.D)) then BoardController.Prefab <- PrefabCount.Gagoiru
         match BoardController.Turn with
         | TurnCount.deploy ->
+            if min Team1.TeamMember.Length Team2.TeamMember.Length > MAX_UNIT then
+                BoardController.Turn <- TurnCount.battle
             point2 <- toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
             if (distBtwV2Sq point1 point2 > 1.0f) then
                 point1 <- point2
@@ -36,36 +38,28 @@ type GlobalState() =
                     match BoardController.Deploy with
                     | DeployCount.team1 -> Team1.TeamMember.Length
                     | DeployCount.team2 -> Team2.TeamMember.Length
-                    | _ -> MAX_UNIT + 100 // 以下を発火させない
-
-                let mutable continue2 = true
-                if BoardController.Deploy = DeployCount.none then continue2 <- false
-                if continue2 then
+                    | _ -> MAX_UNIT + 100 // 決してマッチしない
+                if BoardController.Deploy <> DeployCount.none then
                     if (whichNumber <= MAX_UNIT) then
-                        let mutable continue1 = true
-                        if BoardController.Deploy = DeployCount.none then continue1 <- false
-                        if continue1 then
-                            let myteam =
-                                if BoardController.Deploy = DeployCount.team1
-                                then Team1
-                                else Team2
+                        let myteam =
+                            if BoardController.Deploy = DeployCount.team1
+                            then Team1
+                            else Team2
 
-                            let opponentTeam =
-                                if BoardController.Deploy = DeployCount.team1
-                                then Team2
-                                else Team1
+                        let opponentTeam =
+                            if BoardController.Deploy = DeployCount.team1
+                            then Team2
+                            else Team1
 
-                            let addingCharacter =
-                                let prop = (point1.x, point1.y, myteam, opponentTeam, myteam.TeamMember.Length)
-                                match BoardController.Prefab with
-                                | PrefabCount.Gobrui -> Gobrui.Add prop
-                                | PrefabCount.Gagoiru -> Gagoiru.Add prop
-                                | PrefabCount.Maruta -> Maruta.Add prop
-                                | _ -> Gobrui.Add prop
+                        let addingCharacter =
+                            let prop = (point1.x, point1.y, myteam, opponentTeam, myteam.TeamMember.Length)
+                            match BoardController.Prefab with
+                            | PrefabCount.Gobrui -> Gobrui.Add prop
+                            | PrefabCount.Gagoiru -> Gagoiru.Add prop
+                            | PrefabCount.Maruta -> Maruta.Add prop
+                            | _ -> Gobrui.Add prop
 
-                            myteam.Add addingCharacter
-                            if min Team1.TeamMember.Length Team2.TeamMember.Length > 30 then
-                                BoardController.Turn <- TurnCount.battle
+                        myteam.Add addingCharacter
         | TurnCount.battle ->
             if min Team1.TeamMember.Length Team2.TeamMember.Length > 0 then
                 Team1.BattlePerF

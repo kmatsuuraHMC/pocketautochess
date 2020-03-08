@@ -5,7 +5,8 @@ open FSharp.Core
 open TokenF
 open tokenUtil
 open PrefabCount
-open PrefabCount
+
+exception TeamMemberNotFoundException of string
 
 [<AbstractClass>]
 type Character() =
@@ -45,7 +46,14 @@ and Team() =
     let mutable teamMember = Array.empty
     member this.TeamMember: array<Character> = teamMember
     member this.Add character = teamMember <- Array.append this.TeamMember [| character |]
-    member this.DeleteTeamMember character: Unit = teamMember <- Array.except [| character |] teamMember
+
+    member this.DeleteTeamMember character: Unit =
+        if Array.contains character teamMember then
+            teamMember <- Array.except [| character |] teamMember
+            character.DestroyObj()
+        else
+            raise (TeamMemberNotFoundException <| this.ToString() + "does not have Member " + character.name)
+
     //         for (int i = 0; i < 5; i++)
     //             Particle.Add(searchedCharaByName.tokenX, searchedCharaByName.tokenY);
     member this.SearchedCharaByNumber(num) =
