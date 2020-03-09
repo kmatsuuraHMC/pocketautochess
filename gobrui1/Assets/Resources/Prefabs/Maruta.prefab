@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6671063150257101378}
   - component: {fileID: -8373231534605635939}
   m_Layer: 0
-  m_Name: maruta
+  m_Name: Maruta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,6 +140,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4245325030458426476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 930aed5e684f31c02a5331ddfc10e517, type: 3}
+  m_Script: {fileID: 92481339, guid: 1833c88a74d18fb919f3fb97adadfd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

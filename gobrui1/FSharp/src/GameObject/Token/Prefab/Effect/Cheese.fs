@@ -14,6 +14,7 @@ open System.Collections
 type Cheese() =
     inherit Token()
     let mutable i = 0
+    member this.Start() = this.ShrinkOut 0.8f
 
     member this.I
         with get () = i
@@ -22,7 +23,8 @@ type Cheese() =
     member this.StartFunc = this.ShrinkOut 0.7f
 
     static member Add(attacktarget: Character) =
-    /// コルーチンでフェードアウト(CSharpで設定してる)
+        /// コルーチンでフェードアウト(CSharpで設定してる)
         let prefab = GetPrefab null PrefabCount.Cheese
+
         let expro = CreateInstance2<Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese")
         expro

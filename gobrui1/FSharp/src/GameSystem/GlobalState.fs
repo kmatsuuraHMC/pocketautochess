@@ -13,7 +13,6 @@ open GobruiF
 open MarutaF
 open PrefabCount
 
-
 type GlobalState() =
     inherit MonoBehaviour()
     let mutable point1, point2 = Vector2(0.0f, 0.0f), Vector2(0.0f, 0.0f)
@@ -21,9 +20,7 @@ type GlobalState() =
     let mutable Team2 = Team()
     let MAX_UNIT = 30
 
-    member this.Start = ()
-
-    member this.UpdateFunc =
+    member this.Update () =
         if (Input.GetKey(KeyCode.A)) then BoardController.Prefab <- PrefabCount.Gobrui
         if (Input.GetKey(KeyCode.S)) then BoardController.Prefab <- PrefabCount.Maruta
         if (Input.GetKey(KeyCode.D)) then BoardController.Prefab <- PrefabCount.Gagoiru
@@ -31,16 +28,22 @@ type GlobalState() =
         | TurnCount.deploy ->
             if min Team1.TeamMember.Length Team2.TeamMember.Length > MAX_UNIT then
                 BoardController.Turn <- TurnCount.battle
-            point2 <- toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
-            if (distBtwV2Sq point1 point2 > 1.0f) then
-                point1 <- point2
-                let whichNumber =
-                    match BoardController.Deploy with
-                    | DeployCount.team1 -> Team1.TeamMember.Length
-                    | DeployCount.team2 -> Team2.TeamMember.Length
-                    | _ -> MAX_UNIT + 100 // 決してマッチしない
-                if BoardController.Deploy <> DeployCount.none then
-                    if (whichNumber <= MAX_UNIT) then
+            else
+                point2 <- toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
+                if (distBtwV2Sq point1 point2 <= 1.0f) then
+                    ()
+                else if BoardController.Deploy = DeployCount.none then
+                    ()
+                else
+                    point1 <- point2
+                    let whichNumber =
+                        match BoardController.Deploy with
+                        | DeployCount.team1 -> Team1.TeamMember.Length
+                        | DeployCount.team2 -> Team2.TeamMember.Length
+                        | _ -> MAX_UNIT + 100 // 決してマッチしない
+                    if (whichNumber > MAX_UNIT) then
+                        ()
+                    else
                         let myteam =
                             if BoardController.Deploy = DeployCount.team1
                             then Team1
@@ -60,6 +63,7 @@ type GlobalState() =
                             | _ -> Gobrui.Add prop
 
                         myteam.Add addingCharacter
+
         | TurnCount.battle ->
             if min Team1.TeamMember.Length Team2.TeamMember.Length > 0 then
                 Team1.BattlePerF

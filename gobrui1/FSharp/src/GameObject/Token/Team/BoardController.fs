@@ -44,14 +44,13 @@ and Board1(boardController) =
         with get () = boardController
         and set v = boardController <- v
 
-    member this.OnMouseDownFunc =
-        if BoardController.Turn = TurnCount.deploy then
-            BoardController.Deploy <- DeployCount.team1
+    member this.OnMouseDown() =
+        if BoardController.Turn = TurnCount.deploy then BoardController.Deploy <- DeployCount.team1
 
-    member this.OnMouseUpFunc =
+    member this.OnMouseUp() =
         if BoardController.Turn = TurnCount.deploy then BoardController.Deploy <- DeployCount.none
 
-    member this.OnMouseOverFunc =
+    member this.OnMouseOver() =
         if BoardController.Turn = TurnCount.deploy then
             match BoardController.Deploy with
             | DeployCount.team2 -> BoardController.Deploy <- DeployCount.none
@@ -62,14 +61,13 @@ and Board2(boardController) =
     inherit Token()
     let mutable boardController: BoardController = boardController
 
-    member this.OnMouseDownFunc =
-        if BoardController.Turn = TurnCount.deploy then
-            BoardController.Deploy <- DeployCount.team2
+    member this.OnMouseDown() =
+        if BoardController.Turn = TurnCount.deploy then BoardController.Deploy <- DeployCount.team2
 
-    member this.OnMouseUpFunc =
+    member this.OnMouseUp() =
         if BoardController.Turn = TurnCount.deploy then BoardController.Deploy <- DeployCount.none
 
-    member this.OnMouseOverFunc =
+    member this.OnMouseOver() =
         if BoardController.Turn = TurnCount.deploy then
             match BoardController.Deploy with
             | DeployCount.team1 -> BoardController.Deploy <- DeployCount.none
