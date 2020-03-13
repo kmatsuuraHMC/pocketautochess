@@ -35,6 +35,8 @@ type BoardController() =
         | PrefabCount.Maruta -> "Maruta"
         | _ -> "Gobrui"
 
+    static member MAX_UNIT = 30
+
 /// ターンの制御をする
 and Board1(boardController) =
     inherit Token()

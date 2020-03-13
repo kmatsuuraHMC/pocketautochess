@@ -18,6 +18,11 @@
     <Compile Include="src/GameObject/Token/Prefab/Character/Maruta.fs" />
     <Compile Include="src/GameObject/Token/Prefab/Character/Gagoiru.fs" />
     <Compile Include="src/GameObject/Token/Prefab/Character/Gobrui.fs" />
+    <Compile Include="src/GameSystem/Interface/GlobalStateI.fs" />
+    <Compile Include="src/GameSystem/TurnAction/PreAction/PreActionDriver.fs" />
+    <Compile Include="src/GameSystem/TurnAction/DeployPerF.fs" />
+    <Compile Include="src/GameSystem/TurnAction/DeployDriver.fs" />
+    <Compile Include="src/GameSystem/TurnAction/Battle/BattleDriver.fs" />
     <Compile Include="src/GameSystem/GlobalState.fs" />
     <Compile Include="src/Util/doneOrYet.fs" />
   </ItemGroup>

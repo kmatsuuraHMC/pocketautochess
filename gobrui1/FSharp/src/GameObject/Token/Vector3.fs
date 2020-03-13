@@ -18,7 +18,7 @@ module OperatorV3 =
     let (@@*) (a: float32) (v: Vector3) = Vector3(a * v.x, a * v.y, a * v.z) //スカラー倍
     let negate3 v = (-1.0f) @@* v //負
     let (@@+) (v: Vector3) (w: Vector3) = Vector3(v.x + w.x, v.y + w.y, v.z + w.z) //和
-    let (@@-) (v, w) = (@@+) v (negate3 w) //差
+    let (@@-) (v) (w) = (@@+) v (negate3 w) //差
     let toV2 (v: Vector3): Vector2 = Vector2(v.x, v.y) //z座標を消す
 
     let distBtwV3Sq (v: Vector3) (w: Vector3) =
