@@ -32,5 +32,5 @@ type Gagoiru() =
             else
                 this.SetVelocity(target.tokenX - this.tokenX, target.tokenY - this.tokenY, defaultSpeed)
 
-    static member Add(x, y, my, opponent, num) =
-            addCharacter<Gagoiru> (x, y, my, opponent, PrefabCount.Gagoiru, num, "gagoirudayo", defaultHp) :> Character
+    static member Add(pos, my, opponent, num) =
+        addCharacter<Gagoiru> (pos, my, opponent, PrefabCount.Gagoiru, num, "gagoirudayo", defaultHp) :> Character

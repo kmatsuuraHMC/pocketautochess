@@ -18,5 +18,5 @@ type Explosion() =
     /// コルーチンでフェードアウト(CSharpで設定してる)
     static member Add(attacktarget: Character) =
         let prefab = GetPrefab null PrefabCount.Explosion
-        let expro = CreateInstance2<Explosion>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Explosion")
+        let expro = CreateInstance2<Explosion>(prefab, attacktarget.pos, "Explosion")
         expro

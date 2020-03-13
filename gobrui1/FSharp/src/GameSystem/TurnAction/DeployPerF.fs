@@ -17,7 +17,7 @@ type deployEffect =
     | NoChangeOfDeployTurn
     | ChangeCountToBattle
     | PositionChange of Vector2
-    | PCandAddCharacter of x:float32 * y:float32 * myteam:Team* opponentTeam:Team * mtLength : int
+    | PCandAddCharacter of mousePosition:Vector2 * myteam:Team* opponentTeam:Team * mtLength : int
 
 module DeployPerF =
     let MAX_UNIT = BoardController.MAX_UNIT
@@ -47,7 +47,7 @@ module DeployPerF =
                     PositionChange mousePosition
                 else
                     let prop =
-                        (mousePosition.x, mousePosition.y, myteam, opponentTeam,
+                        (mousePosition, myteam, opponentTeam,
                          myteam.TeamMember.Length)
 
                     PCandAddCharacter prop

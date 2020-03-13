@@ -17,8 +17,8 @@ module DeployDriver =
         | NoChangeOfDeployTurn -> ()
         | ChangeCountToBattle -> BoardController.Turn <- TurnCount.battle
         | PositionChange b -> state.previousPutPosition <- b
-        | PCandAddCharacter(x, y, myteam, opponentTeam, leng) ->
-            let prop = (x, y, myteam, opponentTeam, leng)
+        | PCandAddCharacter(mousePosition, myteam, opponentTeam, leng) ->
+            let prop = (mousePosition, myteam, opponentTeam, leng)
 
             let addingCharacter =
                 match BoardController.Prefab with
@@ -26,5 +26,5 @@ module DeployDriver =
                 | PrefabCount.Gagoiru -> Gagoiru.Add prop
                 | PrefabCount.Maruta -> Maruta.Add prop
                 | _ -> Gobrui.Add prop
-            state.previousPutPosition <- Vector2(x, y)
+            state.previousPutPosition <- mousePosition
             myteam.Add addingCharacter

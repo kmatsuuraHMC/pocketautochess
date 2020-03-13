@@ -26,5 +26,5 @@ type Cheese() =
         /// コルーチンでフェードアウト(CSharpで設定してる)
         let prefab = GetPrefab null PrefabCount.Cheese
 
-        let expro = CreateInstance2<Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese")
+        let expro = CreateInstance2<Cheese>(prefab, attacktarget.pos, "Cheese")
         expro

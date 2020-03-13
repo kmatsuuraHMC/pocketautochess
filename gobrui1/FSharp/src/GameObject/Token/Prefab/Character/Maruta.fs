@@ -19,7 +19,7 @@ type Maruta() =
     override this.attack attacktarget =
         if (Random.Range(1, 10) = 1) then
             let prefab = GetPrefab null PrefabCount.Explosion
-            CreateInstance2<Explosion>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Explosion") |> ignore
+            CreateInstance2<Explosion>(prefab, attacktarget.pos, "Explosion") |> ignore
         for other in this.opponentTeam.TeamMember do
             if (getDistanceSq (attacktarget, other) < explosionRange * explosionRange) then
                 other.hp <- other.hp - defaultAttack
@@ -36,6 +36,5 @@ type Maruta() =
             else
                 this.SetVelocity(target.tokenX - this.tokenX, target.tokenY - this.tokenY, defaultSpeed)
 
-    static member Add: float32 * float32 * Team * Team * int -> Character =
-        fun (x, y, my, opponent, num) ->
-            addCharacter<Maruta> (x, y, my, opponent, PrefabCount.Maruta, num, "Marutadayo", defaultHp) :> Character
+    static member Add(pos, my, opponent, num) =
+        addCharacter<Maruta> (pos, my, opponent, PrefabCount.Maruta, num, "Marutadayo", defaultHp) :> Character
