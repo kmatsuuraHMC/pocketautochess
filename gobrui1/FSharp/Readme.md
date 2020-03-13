@@ -3,7 +3,7 @@ git@github.com:fsprojects/FSharpx.Extras.git
 ionide推奨
 
 ビルド↓
-cp $Home/Unity/Hub/Editor/Data ./
+cp -r $HOME/Unity/Hub/Editor/2019.3.2f1/Editor/Data ./
 dotnet build
 
 ★ビルドできない時
