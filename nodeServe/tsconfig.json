@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "target": "ES2019",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "inlineSourceMap": true,
+    "esModuleInterop": true,
+    "inlineSources": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "**/*.test.ts"]
+}
