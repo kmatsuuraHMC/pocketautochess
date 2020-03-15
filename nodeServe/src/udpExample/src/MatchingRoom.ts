@@ -5,10 +5,17 @@ var utils = new Utils();
 
 //現在の書き方だと２以外指定できない
 const MATCH_NUM = 2;
+type MatchingPlayerData = {
+  type: string;
+  id: string;
+  name: any;
+  address: string;
+  port: number;
+};
 
 export class MatchingRoom {
   server: dgram.Socket;
-  waitingPlayer: any[];
+  waitingPlayer: MatchingPlayerData[];
   waitingPlayerTimeOut?: NodeJS.Timeout;
   constructor(server: dgram.Socket) {
     this.server = server;
@@ -24,7 +31,7 @@ export class MatchingRoom {
 
     utils.sendJsonAndWriteLog(data, port, address, this.server);
 
-    const hoge = { ...data, port: port.toString(), address: address };
+    const hoge = { ...data, port: port, address: address };
 
     this.waitingPlayer.push(hoge);
 
@@ -82,4 +89,3 @@ export class MatchingRoom {
     }
   }
 }
-
