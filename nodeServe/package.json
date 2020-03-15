@@ -20,7 +20,7 @@
     "mocha": "yarn run nyc mocha **/*.test.ts",
     "start": "yarn run build && yarn run main",
     "test": "yarn run clean && yarn run mocha",
-    "udpExampleStart": "node ./src/example.js"
+    "udpExampleStart": "node ./dist/udpExample/index.js"
   },
   "nyc": {
     "extension": [

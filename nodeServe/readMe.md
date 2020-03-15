@@ -6,6 +6,6 @@ yarn build
 オワオワリ
 
 実行方法は、
-./dist/udpExample/index.js
+yarn udpExampleStart
 
 頑張ってください
