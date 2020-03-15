@@ -15,6 +15,10 @@ type Token() =
     let _height: float32 = 0.0f
     let mutable _prefab: GameObject = null
 
+    member this.pos
+        with get () = toV2 this.transform.position
+        and set v = this.transform.position <- toV3 v
+
     member this.tokenX
         with get () = this.transform.position.x
         and set value =
@@ -127,14 +131,14 @@ module tokenUtil =
         | null -> Resources.Load("Prefabs/" + (toPrefabName prefabCount)) :?> GameObject
         | _ -> prefab
 
-    let CreateInstance<'Type when 'Type :> Token>(prefab: GameObject, p: Vector3, name: string): 'Type =
+    let CreateInstance<'Type when 'Type :> Token>(prefab: GameObject, p: Vector2, name: string): 'Type =
+        let p = toV3 p
         let g = GameObject.Instantiate(prefab, p, Quaternion.identity) :?> GameObject
         let obj: 'Type = g.GetComponent<'Type>()
         g.name <- name
         obj
 
-    let CreateInstance2<'Type when 'Type :> Token>(prefab: GameObject, x, y, name) =
-        let pos = Vector3(x, y, 0.0f)
+    let CreateInstance2<'Type when 'Type :> Token>(prefab: GameObject, pos, name) =
         let g = CreateInstance<'Type>(prefab, pos, name)
         g
 

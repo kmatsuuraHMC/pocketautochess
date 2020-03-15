@@ -12,64 +12,32 @@ open GagoiruF
 open GobruiF
 open MarutaF
 open PrefabCount
-
+open PreActionDriver.PreActionDriver
+open DeployPerF
+open DeployPerF.DeployPerF
+open DeployDriver.DeployDriver
+open BattleDriver.BattleDriver
 
 type GlobalState() =
     inherit MonoBehaviour()
-    let mutable point1, point2 = Vector2(0.0f, 0.0f), Vector2(0.0f, 0.0f)
-    let mutable Team1 = Team()
-    let mutable Team2 = Team()
-    let MAX_UNIT = 30
+    let mutable prePosition = Vector2(0.0f, 0.0f)
+    let team1 = Team()
+    let team2 = Team()
 
-    member this.Start = ()
+    interface GlobalStateI.GlobalStateI with
 
-    member this.UpdateFunc =
-        if (Input.GetKey(KeyCode.A)) then BoardController.Prefab <- PrefabCount.Gobrui
-        if (Input.GetKey(KeyCode.S)) then BoardController.Prefab <- PrefabCount.Maruta
-        if (Input.GetKey(KeyCode.D)) then BoardController.Prefab <- PrefabCount.Gagoiru
+        member this.previousPutPosition
+            with get () = prePosition
+            and set v = prePosition <- v
+
+        member this.Team1 = Team()
+        member this.Team2 = Team()
+
+    member this.Update() =
+        PreActionDriver()
         match BoardController.Turn with
         | TurnCount.deploy ->
-            point2 <- toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
-            if (distBtwV2Sq point1 point2 > 1.0f) then
-                point1 <- point2
-                let whichNumber =
-                    match BoardController.Deploy with
-                    | DeployCount.team1 -> Team1.TeamMember.Length
-                    | DeployCount.team2 -> Team2.TeamMember.Length
-                    | _ -> MAX_UNIT + 100 // 以下を発火させない
-
-                let mutable continue2 = true
-                if BoardController.Deploy = DeployCount.none then continue2 <- false
-                if continue2 then
-                    if (whichNumber <= MAX_UNIT) then
-                        let mutable continue1 = true
-                        if BoardController.Deploy = DeployCount.none then continue1 <- false
-                        if continue1 then
-                            let myteam =
-                                if BoardController.Deploy = DeployCount.team1
-                                then Team1
-                                else Team2
-
-                            let opponentTeam =
-                                if BoardController.Deploy = DeployCount.team1
-                                then Team2
-                                else Team1
-
-                            let addingCharacter =
-                                let prop = (point1.x, point1.y, myteam, opponentTeam, myteam.TeamMember.Length)
-                                match BoardController.Prefab with
-                                | PrefabCount.Gobrui -> Gobrui.Add prop
-                                | PrefabCount.Gagoiru -> Gagoiru.Add prop
-                                | PrefabCount.Maruta -> Maruta.Add prop
-                                | _ -> Gobrui.Add prop
-
-                            myteam.Add addingCharacter
-                            if min Team1.TeamMember.Length Team2.TeamMember.Length > 30 then
-                                BoardController.Turn <- TurnCount.battle
-        | TurnCount.battle ->
-            if min Team1.TeamMember.Length Team2.TeamMember.Length > 0 then
-                Team1.BattlePerF
-                Team2.BattlePerF
-            else
-                BoardController.Turn <- TurnCount.finished
+            let mousePosition = toV2 <| Camera.main.ScreenToWorldPoint Input.mousePosition
+            DeployDriver(this, deployPerF (team1, team2, prePosition, mousePosition))
+        | TurnCount.battle -> BattleDriver(team1, team2)
         | _ -> ()

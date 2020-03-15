@@ -1,12 +1,12 @@
 namespace PrefabCount
 
 type PrefabCount =
-    | Explosion = 3
-    | Cheese = 5
-    | Houtyou = 4
-    | Gobrui = 0
-    | Gagoiru = 1
-    | Maruta = 2
+    | Explosion
+    | Cheese
+    | Houtyou
+    | Gobrui
+    | Gagoiru
+    | Maruta
 
 
 module PrefabCountUtil =

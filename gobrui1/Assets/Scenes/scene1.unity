@@ -139,12 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a6d97fc28c8ffeea0ccbf65fc9b72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _rigidbody2D: {fileID: 0}
-  _width: 0
-  _height: 0
-  _prefab: {fileID: 0}
-  boardController@40: {fileID: 0}
 --- !u!1001 &1262419598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,12 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de49aee4824937cdb55f0e4db4fdb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _rigidbody2D: {fileID: 0}
-  _width: 0
-  _height: 0
-  _prefab: {fileID: 0}
-  boardController@62: {fileID: 0}
 --- !u!1001 &1888988626
 PrefabInstance:
   m_ObjectHideFlags: 0

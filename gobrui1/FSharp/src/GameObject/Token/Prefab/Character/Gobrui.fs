@@ -19,18 +19,16 @@ type Gobrui() =
         attacktarget.hp <- attacktarget.hp - defaultAttack
         if (Random.Range(1, 10) = 1) then
             let prefab = GetPrefab null PrefabCount.Cheese
-            CreateInstance2<CheeseF.Cheese>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Cheese") |> ignore
+            CreateInstance2<CheeseF.Cheese>(prefab, attacktarget.pos, "Cheese") |> ignore
 
     override this.BattlePerF =
-        let mutable i = true
-        if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false
         let target = this.AttackTarget
-        if i then
+        if this.opponentTeam.TeamMember.Length <> 0 then
             if (getDistanceSq (this, target) < defaultRange * defaultRange) then
                 this.SetVelocity(1.0f, 0.0f, 0.0f)
                 this.attack target
             else
                 this.SetVelocity(target.tokenX - this.tokenX, target.tokenY - this.tokenY, defaultSpeed)
 
-    static member Add (x, y, myTeam, opponentTeam, charaNum) =
-            addCharacter<Gobrui> (x, y, myTeam, opponentTeam, PrefabCount.Gobrui, charaNum, "Gobruidayo", defaultHp) :> Character
+    static member Add(pos, myTeam, opponentTeam, charaNum) =
+        addCharacter<Gobrui> (pos, myTeam, opponentTeam, PrefabCount.Gobrui, charaNum, "Gobruidayo", defaultHp) :> Character
