@@ -15,24 +15,30 @@ type UDPManager() =
     inherit MonoBehaviour()
     let host = "localhost"
     let port = 33333
-    let messageReceived = new Event<MessageReceived>()
-    static let mutable instance: UDPManager = unbox null
+    let mutable messageReceived = new Event<MessageReceived>()
+    static let mutable instance: option<UDPManager> = None
+    let mutable client: UdpClient = null
+    let mutable thread: Thread = null
+
+    member this.messageReceivedI
+        with get () = messageReceived
+        and set v = messageReceived <- v
 
     static member Instance =
-        if (box instance <> null) then
-            instance
-        else
-            instance <- GameObject.FindObjectOfType<UDPManager>()
-            if (box instance <> null) then
+        match instance with
+        | Some inst -> inst
+        | None ->
+            let inst = GameObject.FindObjectOfType<UDPManager>()
+            if (box inst
+                |> isNull
+                |> not) then
+                inst
+            else
                 let newObj = GameObject()
                 newObj.name <- "UDPManager"
                 newObj.AddComponent<UDPManager>() |> ignore
                 GameObject.Instantiate(newObj) |> ignore
-                instance <- newObj.GetComponent<UDPManager>()
-            instance
-
-    member private this.client: UdpClient = null
-    member private this.thread: Thread = null
+                newObj.GetComponent<UDPManager>()
 
     member this.Awake() =
         if (this <> UDPManager.Instance) then
@@ -43,9 +49,9 @@ type UDPManager() =
 
     member this.ThreadMethod() =
         while (true) do
-            if (not this.client.Client.Connected) then this.client.Connect(host, port)
+            if (not client.Client.Connected) then client.Connect(host, port)
             let remoteEP: IPEndPoint = null
-            let data: byte [] = this.client.Receive(ref remoteEP)
+            let data: byte [] = client.Receive(ref remoteEP)
             let text = Encoding.UTF8.GetString(data)
             if (box messageReceived <> null) then
                 let jsonNode = JsonNode.Parse(text)
@@ -53,27 +59,25 @@ type UDPManager() =
             Debug.Log("Get:" + text)
 
     member this.Start() =
-        let client = new UdpClient()
+        client <- new UdpClient()
         client.Connect(host, port)
-        let thread = new Thread(new ThreadStart(this.ThreadMethod))
+        thread <- Thread(ThreadStart(this.ThreadMethod))
         thread.Start()
 
     member this.OnApplicationFocus(focus) =
-        if isNull (this.client) then ()
-        else if (focus) then this.client.Connect(host, port)
-
-
+        if isNull (client) then ()
+        else if (focus) then client.Connect(host, port)
 
 
 
 
     member this.OnApplicationQuit() =
-        this.client.Close()
-        this.thread.Abort()
-        if (this = UDPManager.Instance) then instance <- unbox null
+        client.Close()
+        thread.Abort()
+        if (this = UDPManager.Instance) then instance <- None
 
     member this.SendJson(jsonStr: string) =
-        if (not this.client.Client.Connected) then this.client.Connect(host, port)
+        if (not client.Client.Connected) then client.Connect(host, port)
         let dgram = Encoding.UTF8.GetBytes(jsonStr)
-        this.client.Send(dgram, dgram.Length) |> ignore
+        client.Send(dgram, dgram.Length) |> ignore
         Debug.Log("SEND:" + jsonStr)

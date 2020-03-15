@@ -35,8 +35,8 @@ type GlobalState() =
         member this.Team2 = Team()
 
     member this.Update() =
-        // let jsonStr = "{\"type\":\"greet\",\"msg\":\"hello\"}"
-        // UDPManager.Instance.SendJson(jsonStr)
+        let jsonStr = "{\"type\":\"greet\",\"msg\":\"hello\"}"
+        UDPManager.Instance.SendJson(jsonStr)
         PreActionDriver()
         match BoardController.Turn with
         | TurnCount.deploy ->
