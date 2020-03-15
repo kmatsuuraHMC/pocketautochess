@@ -14,10 +14,9 @@ open System.Collections
 type Explosion() =
     inherit Token()
 
-    member this.StartFunc = this.ShrinkOut 0.8f
-
+    member this.Start() = this.ShrinkOut 0.8f
     /// コルーチンでフェードアウト(CSharpで設定してる)
     static member Add(attacktarget: Character) =
         let prefab = GetPrefab null PrefabCount.Explosion
-        let expro = CreateInstance2<Explosion>(prefab, attacktarget.tokenX, attacktarget.tokenY, "Explosion")
+        let expro = CreateInstance2<Explosion>(prefab, attacktarget.pos, "Explosion")
         expro
