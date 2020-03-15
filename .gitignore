@@ -17,6 +17,7 @@ gobrui1/UniTask-1.2.0.tar.gz
 gobrui1/Assets/Plugins/
 gobrui1/Assets/UniRx.Async/
 UniTask-1.2.0/
+*/.ionide/
 nodeServe/node_modules/
 nodeServe/yarn-error.log
 nodeServe/yarn.lock
