@@ -17,6 +17,7 @@ open DeployPerF
 open DeployPerF.DeployPerF
 open DeployDriver.DeployDriver
 open BattleDriver.BattleDriver
+open UDPManager
 
 type GlobalState() =
     inherit MonoBehaviour()
@@ -34,6 +35,8 @@ type GlobalState() =
         member this.Team2 = Team()
 
     member this.Update() =
+        // let jsonStr = "{\"type\":\"greet\",\"msg\":\"hello\"}"
+        // UDPManager.Instance.SendJson(jsonStr)
         PreActionDriver()
         match BoardController.Turn with
         | TurnCount.deploy ->

@@ -1,0 +1,8 @@
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/obj/Debug/netstandard2.0/MiniJson.csprojAssemblyReference.cache
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/obj/Debug/netstandard2.0/MiniJson.AssemblyInfoInputs.cache
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/obj/Debug/netstandard2.0/MiniJson.AssemblyInfo.cs
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/bin/Debug/netstandard2.0/MiniJson.deps.json
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/bin/Debug/netstandard2.0/MiniJson.dll
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/bin/Debug/netstandard2.0/MiniJson.pdb
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/obj/Debug/netstandard2.0/MiniJson.dll
+/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/FSharp/package/MiniJson/obj/Debug/netstandard2.0/MiniJson.pdb
