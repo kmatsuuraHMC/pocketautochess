@@ -19,10 +19,6 @@ type Cheese() =
     let OnReceiveMessage(jsonNode: JsonNode, jsonStr: string) = ()
     member this.Start() = this.ShrinkOut 0.8f
 
-    member this.I
-        with get () = i
-        and set v = i <- v
-
     member this.StartFunc = this.ShrinkOut 0.7f
 
     static member Add(attacktarget: Character) =

@@ -18,7 +18,7 @@ type Gobrui() =
     override this.attack attacktarget =
         attacktarget.hp <- attacktarget.hp - defaultAttack
         if (Random.Range(1, 10) = 1) then
-            let prefab = GetPrefab null PrefabCount.Cheese
+            let prefab = GetPrefab null Cheese
             CreateInstance2<CheeseF.Cheese>(prefab, attacktarget.pos, "Cheese") |> ignore
 
     override this.BattlePerF =

@@ -4,7 +4,12 @@ import * as dgram from "dgram";
 export class Utils {
   constructor() {}
   //エラーがあった場合、クライアントにエラーメッセージを送信するための関数
-  sendErrorJson(errMsg: any, port: any, address: any, server: any): void {
+  sendErrorJson(
+    errMsg: string,
+    port: number,
+    address: string,
+    server: dgram.Socket
+  ): void {
     const data = { type: "error", msg: errMsg };
     server.send(JSON.stringify(data), port, address);
     console.log(

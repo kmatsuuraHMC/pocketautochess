@@ -22,10 +22,8 @@ type Gagoiru() =
         if (Random.Range(1, 10) = 1) then Houtyou.Add this attacktarget |> ignore
 
     override this.BattlePerF =
-        let mutable i = true
         let target = this.AttackTarget
-        if this.opponentTeam.TeamMember.Length <> 0 then () else i <- false
-        if i then
+        if this.opponentTeam.TeamMember.Length > 0 then
             if (getDistanceSq (this, target) < defautlRange * defautlRange) then
                 this.SetVelocity(1.0f, 0.0f, 0.0f)
                 this.attack target
