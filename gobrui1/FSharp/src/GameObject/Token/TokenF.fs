@@ -142,14 +142,6 @@ module tokenUtil =
         let g = CreateInstance<'Type>(prefab, pos, name)
         g
 
-    let giveTokenChartAndName (prefab, chartX, chartY, name) =
-        let token = Token()
-        token.Prefab <- prefab
-        token.tokenX <- chartX
-        token.tokenY <- chartY
-        token.name <- name
-        token
-
     let getDistanceSq (token1: Token, token2: Token) =
         let X = token1.tokenX - token2.tokenX
         let Y = token1.tokenY - token2.tokenY

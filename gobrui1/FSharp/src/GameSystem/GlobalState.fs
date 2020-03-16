@@ -3,15 +3,9 @@ namespace GlobalStateF
 open UnityEngine
 open TeamF
 open TurnCount
-open DeployCount
 open BoardsF
 open Vector3Util
-open OperatorV2
 open OperatorV3
-open GagoiruF
-open GobruiF
-open MarutaF
-open PrefabCount
 open PreActionDriver.PreActionDriver
 open DeployPerF
 open DeployPerF.DeployPerF
@@ -35,8 +29,9 @@ type GlobalState() =
         member this.Team2 = Team()
 
     member this.Update() =
-        let jsonStr = "{\"type\":\"greet\",\"msg\":\"hello\"}"
-        UDPManager.Instance.SendJson(jsonStr)
+        // 外してるのはnodeのテスト用です。本来的にこういうのを書くのはよくないらしいです。
+        // let jsonStr = "{\"type\":\"greet\",\"msg\":\"hello\"}"
+        // UDPManager.Instance.SendJson(jsonStr)
         PreActionDriver()
         match BoardController.Turn with
         | TurnCount.deploy ->
