@@ -6,6 +6,8 @@ gobrui1/FSharp/Data/
 gobrui1/FSharp/bin/
 gobrui1/FSharp/obj/
 gobrui1/FSharp/bin/Debug/netstandard2.0/FSharp.dll
+gobrui1/FSharp/package/MiniJson/bin/
+gobrui1/FSharp/package/MiniJson/obj/
 *.dll
 *.cache
 gobrui1/FSharp/obj/
