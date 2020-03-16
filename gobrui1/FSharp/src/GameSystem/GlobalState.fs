@@ -29,9 +29,6 @@ type GlobalState() =
         member this.Team2 = Team()
 
     member this.Update() =
-        // 外してるのはnodeのテスト用です。本来的にこういうのを書くのはよくないらしいです。
-        // let jsonStr = "{\"type\":\"greet\",\"msg\":\"hello\"}"
-        // UDPManager.Instance.SendJson(jsonStr)
         PreActionDriver()
         match BoardController.Turn with
         | TurnCount.deploy ->

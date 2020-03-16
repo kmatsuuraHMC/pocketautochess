@@ -1,13 +1,8 @@
 namespace BoardsF
 
-open UnityEngine
 open DeployCount
-open TeamF
-open MouseCount
 open TurnCount
-open DeployCount
 open TokenF
-open tokenUtil
 open PrefabCount
 
 type BoardController() =
@@ -40,11 +35,6 @@ type BoardController() =
 /// ターンの制御をする
 and Board1(boardController) =
     inherit Token()
-    let mutable boardController: BoardController = boardController
-
-    member this.BoardController
-        with get () = boardController
-        and set v = boardController <- v
 
     member this.OnMouseDown() =
         if BoardController.Turn = TurnCount.deploy then BoardController.Deploy <- DeployCount.team1
@@ -61,7 +51,6 @@ and Board1(boardController) =
 
 and Board2(boardController) =
     inherit Token()
-    let mutable boardController: BoardController = boardController
 
     member this.OnMouseDown() =
         if BoardController.Turn = TurnCount.deploy then BoardController.Deploy <- DeployCount.team2
@@ -74,7 +63,3 @@ and Board2(boardController) =
             match BoardController.Deploy with
             | DeployCount.team1 -> BoardController.Deploy <- DeployCount.none
             | _ -> ()
-
-    member this.BoardController
-        with get () = boardController
-        and set v = boardController <- v
