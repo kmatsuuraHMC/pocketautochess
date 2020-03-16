@@ -228,13 +228,10 @@
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="FSharp.Core">
- <HintPath>/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
+ <HintPath>/home/takaki/Documents/unityMoveed/hogehoge/pocketautochess/gobrui1/Assets/FSharp.Core.dll</HintPath>
  </Reference>
  <Reference Include="FSharp">
- <HintPath>/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/Assets/Plugins/FSharp.dll</HintPath>
- </Reference>
- <Reference Include="MiniJson">
- <HintPath>/home/takaki/Documents/unityMoveed/theAfter/pocketautochess/gobrui1/Assets/MiniJson.dll</HintPath>
+ <HintPath>/home/takaki/Documents/unityMoveed/hogehoge/pocketautochess/gobrui1/Assets/Plugins/FSharp.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/takaki/Unity/Hub/Editor/2019.3.2f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
