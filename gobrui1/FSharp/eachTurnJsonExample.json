@@ -1,0 +1,203 @@
+{
+  "deployWaitingExample": {
+    "type": "deploy",
+    "deployPhase": "1",
+    "yourTeam": [
+      {
+        "race": "GobruiかGagoiruかMarutaか",
+        "x": "再大小はまだ調べてナシ float",
+        "y": "2.5",
+        "number": "1"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "2"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "3"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "4"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "5"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "6"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "7"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "8"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "9"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "10"
+      }
+    ],
+    "opponentTeam": [
+      {
+        "race": "Gobrui",
+        "x": "1.0",
+        "y": "2.5",
+        "number": "1"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "2"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "3"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "4"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "5"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "6"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "7"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "8"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "9"
+      },
+      {
+        "race": "Gobrui",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "10"
+      }
+    ],
+    "nextDeposit": [
+      {
+        "comment": "ここは次に置くやつ 10溜まったらyouTeamに入れてください、ここは相手には見せてはいけないやつ",
+        "race": "Gagoiru",
+        "x": "1.0",
+        "y": "2.5",
+        "number": "11"
+      },
+      {
+        "race": "Gagoiru",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "12"
+      },
+      {
+        "race": "Gagoiru",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "13"
+      },
+      {
+        "race": "Gagoiru",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "14"
+      },
+      {
+        "race": "Gagoiru",
+        "x": "3.0",
+        "y": "5.5",
+        "number": "15"
+      }
+    ]
+  },
+  "BattleExample": {
+    "type": "Battle",
+    "battleFramesNoKoment": "下のはフレーム毎の配列にしてください。後ろに行くほどゲーム終わりに近づくってことで",
+    "BattleFrames": [
+      {
+        "yourTeam": [
+          {
+            "race": "Gobrui",
+            "x": "1.0",
+            "y": "2.5",
+            "number": "1",
+            "state": "attackかmoveかdieか(前、直接リストから消してたけどこれでもいいかもね、どっちか決めたら言ってください)",
+            "target": "3"
+          },
+          {
+            "race": "Gobrui",
+            "x": "1.0",
+            "y": "2.5",
+            "number": "1",
+            "state": "attack",
+            "target": "3"
+          }
+        ],
+        "opponentTeam": ["同様"],
+        "yourTeamAttack": [
+          {
+            "rancherNumber": "多分、teamでraceがわかるからこの情報だけでいいかも？hhhhhhhhhhhhhhhh",
+            "targetNumber": "4",
+            "attackMethod": "Gagoiru,Gobrui,Maruta,Marutaの誘爆など"
+          },
+          {
+            "rancherNumber": "3",
+            "targetNumber": "4"
+          }
+        ],
+        "yourTeamDestroy": ["1", "3"],
+        "opponentTeamDestroy": ["3", "5"]
+      }
+    ]
+  }
+}
