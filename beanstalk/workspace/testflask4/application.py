@@ -1,10 +1,10 @@
 from flask import Flask, request, redirect, url_for, session, escape, jsonify
 
-from gamecontroller import GameObject
+from gamecontroller import GameObject, GameController
 
 # declare variable
 # main body of the game
-game = GameObject()
+game = GameController()
 # waiting user of the game
 user_list = []
 # generated_key_list 
@@ -52,11 +52,18 @@ def gamecontrol():
     global game
     key = int(request.form['key'])
     
+    #gameの初期化
+    if key == -1:
+        game.state = 0
+        return"game.stateを初期化しました。"
+
+    #待ってる人がいない。
     if game.state == 0:
         game.player1.key = key
         game.state = 1
         return "You are player1. Waiting for an opponent."
 
+    #すでに待ってる人がいる
     if game.state == 1:
         if key == game.player1.key:
             return "Waiting for an opponent."
@@ -64,6 +71,7 @@ def gamecontrol():
         game.state = 2
         return "You are player2. Game start"
     
+    #ゲームスタート
     if game.state == 2:
         if key not in [game.player1.key, game.player2.key]:
             return "Please wait for the current game ending"
@@ -73,14 +81,135 @@ def gamecontrol():
         elif key == game.player2.key:
             return "Waiting for the opponent"
 
-    
+    #1回目のコマを配置するフェイズ
     if game.state == 3:
-        if key == -1:
-            game.state = 0
-            return"game.stateを初期化しました。"
-        return "コマを配置するフェイズ(未実装)。game.stateを初期化するためにはkey=-1でPOSTしてください。"
+        p1set = 0
+        p2set = 0
+        if key == game.player1.key:
+            if p1set == 1:
+                return "waiting for opponent"
+            ##1回目のコマの配置
+            if p2set == 1:
+                game.state = 4
+            elif p2set == 0:
+                p1set = 1
+            return
 
+        if key == game.player2.key:
+            if p2set == 1:
+                return "waiting for opponet"
+            ##1回目のコマの配置
+            if p1set == 1:
+                game.state = 4
+            elif p1set == 0:
+                p2set = 1
+            return
 
+    #1回目のコマの配置を相手に送信
+    if game.state == 4:
+        p1send = 0
+        p2send = 0
+        if key == game.player1.key:
+            if p1send == 1:
+                return "waiting for opponent"
+            ##1回目のコマのデータを送信
+            if p2send == 1:
+                game.state = 5
+            elif p2send == 0:
+                p1send = 1
+            return
+
+        if key == game.player2.key:
+            if p2send == 1:
+                return "waiting for opponet"
+            ##1回目のコマのデータを送信
+            if p1send == 1:
+                game.state = 5
+            elif p1send == 0:
+                p2send = 1
+            return
+
+    #2回目のコマを配置するフェイズ
+    if game.state == 5:
+        p1set = 0
+        p2set = 0
+        if key == game.player1.key:
+            if p1set == 1:
+                return "waiting for opponent"
+            ##2回目のコマの配置
+            if p2set == 1:
+                game.state = 6
+            elif p2set == 0:
+                p1set = 1
+            return
+
+        if key == game.player2.key:
+            if p2set == 1:
+                return "waiting for opponet"
+            ##2回目のコマの配置
+            if p1set == 1:
+                game.state = 6
+            elif p1set == 0:
+                p2set = 1
+            return
+
+    #2回目のコマの配置を相手に送信
+    if game.state == 6:
+        p1send = 0
+        p2send = 0
+        if key == game.player1.key:
+            if p1send == 1:
+                return "waiting for opponent"
+            ##2回目のコマのデータを送信
+            if p2send == 1:
+                game.state = 7
+            elif p2send == 0:
+                p1send = 1
+            return
+
+        if key == game.player2.key:
+            if p2send == 1:
+                return "waiting for opponet"
+            ##2回目のコマのデータを送信
+            if p1send == 1:
+                game.state = 7
+            elif p1send == 0:
+                p2send = 1
+            return
+
+    #3回目のコマの配置を相手に送信
+    if game.state == 7:
+        p1send = 0
+        p2send = 0
+        if key == game.player1.key:
+            if p1send == 1:
+                return "waiting for opponent"
+            ##3回目のコマのデータを送信
+            if p2send == 1:
+                game.state = 8
+            elif p2send == 0:
+                p1send = 1
+            return
+
+        if key == game.player2.key:
+            if p2send == 1:
+                return "waiting for an opponent"
+            ##3回目のコマのデータを送信
+            if p1send == 1:
+                game.state = 8
+            elif p1send == 0:
+                p2send = 1
+            return
+    
+    #ゲームの実行
+    if game.state == 8:
+        ## gameの実行(終了したら勝手にgame.state = 9になる)
+        return
+
+    #ログを流す
+    if game.state == 9:
+        ## お互いがログを受け取る
+        game.state = 0
 
 @application.route("/posttest", methods=["GET", "POST"])
 def odd_even():
