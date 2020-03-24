@@ -35,3 +35,8 @@ nodeServerをビルドしてください。nodeServerにビルド方法が書い
 gobrui1をビルドしてください。gobrui1のFSharpをビルドする必要が有ります。
 cd ./gobrui1/FSharp
 ここのreadmeを参照して下しい
+
+# サーバーとクライアントの通信について
+クライアントが\gamelobbyにPOSTし続ける。
+## マッチングまで
+クライアント: POST
