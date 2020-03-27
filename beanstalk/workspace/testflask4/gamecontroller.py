@@ -1,5 +1,6 @@
 from player import Player
 from minions.minion import *
+import json
 
 class GameController:
     """
@@ -11,16 +12,42 @@ class GameController:
         self.game = GameObject()
         self.time = 0    
         self.log = []
+        self.player1 = Player("player1")
+        self.player2 = Player("player2")
+        
+    def deploy_minions(self, data):
+        """
+        jsonを読み込んでself.gameObjectの中にminionを配置
 
-    def deploy_minions(self):
+        Attribute
+        -----------------
+        data: dict
+            読み込んできたデータ、jsonfileの読み込みはapplication.pyの方でする
+        Return
+        -----------------
+        minions: list<Minion>
         """
-        jsonを読み込んでminionsを配置(未実装)
-        """
-        pass
+        minons = []
+        key = data["key"]
+        if key == self.player1.key:
+            team = 1
+        elif key == self.player2.key:
+            team = 2
+        if data["type"] != "deploy":
+            return "jsonfileのtypeがdeployでありません"
+        for i in range(10):
+            minion_data = data["deploy"]["yourTeam"][i]
+            number = minion_data["number"]
+            race = minion_data["race"]
+            x = minion_data["x"]
+            y = minion_data["y"]
+            self.game.choose_deploy_minion(race, number, team, x, y)
+        
 
     def send_minions(self):
         """
-        クライアントにminionsのは位置情報を送る。（未実装）
+        クライアントにminionsの位置情報を送る。（未実装）
+        self.game.player1_alive_minion_listのデータを10個送る
         """
         pass
 
@@ -42,8 +69,6 @@ class GameObject:
     """
 
     def __init__(self):
-        self.player1 = Player("player1")
-        self.player2 = Player("player2")
         self.player1_alive_minions_list = []
         self.player2_alive_minions_list = []
         self.player1_dead_minions_list = []

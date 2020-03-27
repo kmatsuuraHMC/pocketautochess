@@ -48,10 +48,11 @@ class Minion:
         if self.range >= self.distance:
             self.target.hp -= self.atk
 
-    def calc_distance(self, target = self.target):
+    def calc_distance(self, target = None):
         """
         targetとの距離を計算
         """
+        target = self.target
         if target == None:
             return INF
         distance = ((self.positonx - target.positionx)**2 + (self.positony - target.positiony)**2)**0.5
@@ -138,7 +139,7 @@ class Maruta(Minion):
         super().__init__(id)
         self.race = "maruta"
 
-    @override
+
     def attack(self):
         """
         範囲攻撃（未実装）

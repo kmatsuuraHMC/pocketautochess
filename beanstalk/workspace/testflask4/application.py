@@ -3,6 +3,7 @@ from flask import Flask, request, redirect, url_for, session, escape, jsonify
 from gamecontroller import GameObject, GameController
 
 # declare variable
+
 # main body of the game
 game = GameController()
 # waiting user of the game
@@ -50,18 +51,19 @@ def gamecontrol():
     マッチングをして、ゲームを始めてしまう。あとでリファクタリングする。
     """
     global game
-    key = int(request.form['key'])
+    data = request.json
+    key = int(data['key'])
     
     #gameの初期化
     if key == -1:
         game.state = 0
-        return"game.stateを初期化しました。"
-
+        return"game.stateを{}に初期化しました。".format(game.state)
     #待ってる人がいない。
     if game.state == 0:
         game.player1.key = key
         game.state = 1
         return "You are player1. Waiting for an opponent."
+    
 
     #すでに待ってる人がいる
     if game.state == 1:
