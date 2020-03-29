@@ -3,7 +3,6 @@
 ## 用語
 ミニオン//プレイヤーが配置する駒（キャラ）のこと
 
-
 ## ゲームの流れ
 - まずミニオンを並べる。
 - フレームごとに確率でどれかのミニオンが攻撃。  
@@ -11,13 +10,35 @@
 - 生きてるミニオンが移動。  
 - ミニオンがなくなった方の負け。  
 
+\\まだ書いてる途中
+## 実装(`/beanstalk/workspace/testflask4/`)
+# class GameController
+## field
 
+### class GameObject //ゲームの状態空間(snapshot)
+#### field
+- teammate //キャラの配列
+#### method
+- add //ミニオンの追加
+- delete //ミニオンの削除
 
-びるどほうほう
-nodeServerをビルドしてください。nodeServerにビルド方法が書いてあります（まる）
-gobrui1をビルドしてください。gobrui1のFSharpをビルドする必要が有ります。
-cd ./gobrui1/FSharp
-ここのreadmeを参照して下しい
+### class Minion //キャラ
+#### field
+- hp
+- positionx //x座標
+- positiony //y座標
+- atk
+- range //攻撃範囲
+- speed //移動速度
+- id //個体番号
+- race //ミニオンの種類(ex. maruta)
+- target //攻撃対象<Minion>
+- target_distance //targetとの距離
+- team //所属しているチーム
+#### method
+- choose_traget(minion_list) //minion_listの中からtargetを選択
+- attack //攻撃する
+- move //移動する
 
 # サーバーとクライアントの通信について
 ## 全体的な流れ
