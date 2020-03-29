@@ -17,3 +17,9 @@
 - setAttackTarget //攻撃対象を選ぶ
 - attack //攻撃する
 - moveTo //移動する
+
+びるどほうほう
+nodeServerをビルドしてください。nodeServerにビルド方法が書いてあります（まる）
+gobrui1をビルドしてください。gobrui1のFSharpをビルドする必要が有ります。
+cd ./gobrui1/FSharp
+ここのreadmeを参照して下しい
