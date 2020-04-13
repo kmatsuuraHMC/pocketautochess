@@ -16,27 +16,21 @@ class Minion:
         numpy.arrayとかに変えたいあとで
     team:int,
     """
-    default_hp = 100
-    default_atk = 5
-    default_range = 6
-    default_speed = 20
-    default_positionx = 0
-    default_positiony = 0
     INF = 100000000
-
-    def __init__(self, id):
+    def __init__(self, id, hp, atk, range, speed):
+        INF = 100000000
         self.id = id
-        self.hp = default_hp 
-        self.atk = default_atk
-        self.range = default_range
-        self.speed = default_speed
+        self.hp = hp 
+        self.atk = atk
+        self.range = range
+        self.speed = speed
         self.race = "minion"
         self.action = "move" #"attack" or "move" or "die"
-        self.positonx = default_positionx
-        self.positony = default_positiony
+        self.positonx = 0
+        self.positony = 0
         self.team = 0
         self.target = None
-        self.target_distance = INF
+        self.target_distance = 100000000
 
     def attack(self):
         """
@@ -95,32 +89,16 @@ class Gagoiru(Minion):
     """
     Gagoiruクラス
     """
-    default_hp = 3000
-    default_atk = 20
-    default_range = 6
-    default_speed = 3
-    default_positionx = 0
-    default_positiony = 0
-    INF = 100000000
-
     def __init__(self, id):
-        super().__init__(id)
+        super().__init__(id, hp = 3000, atk = 20, range = 6, speed = 3)
         self.race = "gagoiru"
 
 class Gobrui(Minion):
     """
     Goburuiクラス
     """
-    default_hp = 9000
-    default_atk = 13
-    default_range = 1.5
-    default_speed = 10
-    default_positionx = 0
-    default_positiony = 0
-    INF = 100000000
-
     def __init__(self, id):
-        super().__init__(id)
+        super().__init__(id, hp = 9000, atk = 13, range = 1.5, speed = 10)
         self.race = "goburui"
 
 class Maruta(Minion):
@@ -136,7 +114,7 @@ class Maruta(Minion):
     INF = 100000000
 
     def __init__(self, id):
-        super().__init__(id)
+        super().__init__(id, hp = 1500, atk = 10, range = 3, speed = 4)
         self.race = "maruta"
 
 

@@ -85,7 +85,7 @@ class GameObject:
             minion = Gagoiru(id)
         elif race == "Maruta":
             minion = Maruta(id)
-        self.deploy(minion, team, positionx, positiony)
+        self.deploy_minion(minion, team, positionx, positiony)
 
     def deploy_minion(self, minion, team, positionx, positiony):
         """
@@ -103,6 +103,12 @@ class GameObject:
         elif team == 2:
             minion.positionx = -1 * positionx
             self.player2_alive_minions_list.append(minion)
+
+    def minion_to_json():
+        """
+        deployフェイズでクライアントに送るべき情報をjson形式に変換する。
+        """
+        pass
 
     def time_evolve(self):
         """
