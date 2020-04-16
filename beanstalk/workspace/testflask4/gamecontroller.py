@@ -2,19 +2,21 @@ from player import Player
 from minions.minion import *
 import json
 
+
 class GameController:
     """
     ゲームの進行を制御するオブジェクト
     """
+
     def __init__(self):
         self.state = 0
         self.win = 0
         self.game = GameObject()
-        self.time = 0    
+        self.time = 0
         self.log = []
         self.player1 = Player("player1")
         self.player2 = Player("player2")
-        
+
     def deploy_minions(self, data):
         """
         jsonを読み込んでself.gameObjectの中にminionを配置
@@ -42,7 +44,6 @@ class GameController:
             x = minion_data["x"]
             y = minion_data["y"]
             self.game.choose_deploy_minion(race, number, team, x, y)
-        
 
     def send_minions(self):
         """
@@ -59,7 +60,7 @@ class GameController:
             self.log.append((self.time, self.game))
             self.time += 1
             self.game.time_evolve()
-        
+
         self.state = 9
 
 
@@ -104,7 +105,7 @@ class GameObject:
             minion.positionx = -1 * positionx
             self.player2_alive_minions_list.append(minion)
 
-    def minion_to_json():
+    def minion_to_json(self):
         """
         deployフェイズでクライアントに送るべき情報をjson形式に変換する。
         """
@@ -126,13 +127,11 @@ class GameObject:
         for player1minion in self.player1_alive_minions_list:
             if player1minion.action == "move":
                 self.move(player1minion, self.player2_alive_minions_list)
-            
+
         for player2minion in self.player2_alive_minions_list:
             if player2minion.action == "move":
                 self.move(player2minion, self.player1_alive_minions_list)
 
-            
-    
     def battlephase(self, parameter_list):
         """
         minion全員分の攻撃に関する一連の処理
@@ -140,7 +139,7 @@ class GameObject:
         for player1minion in self.player1_alive_minions_list:
             if player1minion.action == "attack":
                 self.attack(player1minion, self.player2_alive_minions_list)
-            
+
         for player2minion in self.player2_alive_minions_list:
             if player2minion.action == "attack":
                 self.attack(player2minion, self.player1_alive_minions_list)
@@ -149,7 +148,7 @@ class GameObject:
         """
         ターン終了時にする処理。履歴をログに書く。hp0以下のミニオンの除去、勝敗条件の確認を行う。
         """
-        #hp0以下のミニオンの削除
+        # hp0以下のミニオンの削除
         temp = self.player1_alive_minions_list.copy()
         for minion in temp:
             if minion.hp <= 0:
@@ -162,7 +161,7 @@ class GameObject:
                 self.player2_alive_minions_list.remove(minion)
                 self.player2_dead_minions_list.append(minion)
 
-        #勝敗条件の確認
+        # 勝敗条件の確認
         if not self.player1_alive_minions_list:
             if not self.player2_alive_minions_list:
                 # 引き分け
@@ -170,7 +169,7 @@ class GameObject:
             elif self.player2_alive_minions_list:
                 # player2の勝利
                 self.win = 2
-        
+
         elif not self.player2_alive_minions_list:
             # player1の勝利
             self.win = 1
@@ -195,5 +194,3 @@ class GameObject:
         """
         attacker.choose_target(target_minion_list)
         attacker.attack()
-
-    
