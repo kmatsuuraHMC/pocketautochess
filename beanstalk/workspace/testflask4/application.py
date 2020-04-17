@@ -1,6 +1,6 @@
-from flask import Flask, request, redirect, url_for, session, escape, jsonify
+from flask import Flask, request, session, escape, jsonify
 
-from gamecontroller import GameObject, GameController
+from gamecontroller import GameController
 
 # declare variable
 
@@ -92,6 +92,8 @@ def gamecontrol():
         p1set = 0
         p2set = 0
         if key == game.player1.key:
+            if data["deploy"]["deployPhase"] != "1":
+                return "deployPhaseが1でありません。"
             if p1set == 1:
                 return "waiting for opponent"
             # 1回目のコマの配置
@@ -102,6 +104,8 @@ def gamecontrol():
             return
 
         if key == game.player2.key:
+            if data["deploy"]["deployPhase"] != "1":
+                return "deployPhaseが1でありません。"
             if p2set == 1:
                 return "waiting for opponet"
             # 1回目のコマの配置
@@ -119,27 +123,31 @@ def gamecontrol():
             if p1send == 1:
                 return "waiting for opponent"
             # 1回目のコマのデータを送信
+            to_client = game.send_minions()
             if p2send == 1:
                 game.state = 5
             elif p2send == 0:
                 p1send = 1
-            return
+            return jsonify(to_client)
 
         if key == game.player2.key:
             if p2send == 1:
                 return "waiting for opponet"
             # 1回目のコマのデータを送信
+            to_client = game.send_minions()
             if p1send == 1:
                 game.state = 5
             elif p1send == 0:
                 p2send = 1
-            return
+            return jsonify(to_client)
 
     # 2回目のコマを配置するフェイズ
     if game.state == 5:
         p1set = 0
         p2set = 0
         if key == game.player1.key:
+            if data["deploy"]["deployPhase"] != "2":
+                return "deployPhaseが2でありません。"
             if p1set == 1:
                 return "waiting for opponent"
             # 2回目のコマの配置
@@ -150,6 +158,8 @@ def gamecontrol():
             return
 
         if key == game.player2.key:
+            if data["deploy"]["deployPhase"] != "2":
+                return "deployPhaseが2でありません。"
             if p2set == 1:
                 return "waiting for opponet"
             # 2回目のコマの配置
@@ -167,45 +177,53 @@ def gamecontrol():
             if p1send == 1:
                 return "waiting for opponent"
             # 2回目のコマのデータを送信
+            to_client = game.send_minions()
             if p2send == 1:
                 game.state = 7
             elif p2send == 0:
                 p1send = 1
-            return
+            return jsonify(to_client)
 
         if key == game.player2.key:
             if p2send == 1:
                 return "waiting for opponet"
             # 2回目のコマのデータを送信
+            to_client = game.send_minions()
             if p1send == 1:
                 game.state = 7
             elif p1send == 0:
                 p2send = 1
-            return
+            return jsonify(to_client)
 
     # 3回目のコマの配置を相手に送信
     if game.state == 7:
         p1send = 0
         p2send = 0
         if key == game.player1.key:
+            if data["deploy"]["deployPhase"] != "3":
+                return "deployPhaseが3でありません。"
             if p1send == 1:
                 return "waiting for opponent"
             # 3回目のコマのデータを送信
+            to_client = game.send_minions()
             if p2send == 1:
                 game.state = 8
             elif p2send == 0:
                 p1send = 1
-            return
+            return jsonify(to_client)
 
         if key == game.player2.key:
+            if data["deploy"]["deployPhase"] != "3":
+                return "deployPhaseが3でありません。"
             if p2send == 1:
                 return "waiting for an opponent"
             # 3回目のコマのデータを送信
+            to_client = game.send_minions()
             if p1send == 1:
                 game.state = 8
             elif p1send == 0:
                 p2send = 1
-            return
+            return jsonify(to_client)
 
     # ゲームの実行
     if game.state == 8:

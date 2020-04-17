@@ -1,11 +1,12 @@
 from player import Player
-from minions.minion import *
+from minions.minion import Gagoiru, Gobrui, Maruta
 import json
 
 
 class GameController:
     """
     ゲームの進行を制御するオブジェクト
+    時間変化に対してイミュータブルな情報は基本こっちに持たせる。
     """
 
     def __init__(self):
@@ -16,10 +17,12 @@ class GameController:
         self.log = []
         self.player1 = Player("player1")
         self.player2 = Player("player2")
+        self.player1_minion_infomation = []
+        self.player2_minion_infomation = []
 
     def deploy_minions(self, data):
         """
-        jsonを読み込んでself.gameObjectの中にminionを配置
+        jsonを読み込んでself.gameObjectの中にminionを配置,minion_infomationにminionの情報を入れる。
 
         Attribute
         -----------------
@@ -29,7 +32,6 @@ class GameController:
         -----------------
         minions: list<Minion>
         """
-        minons = []
         key = data["key"]
         if key == self.player1.key:
             team = 1
@@ -43,14 +45,22 @@ class GameController:
             race = minion_data["race"]
             x = minion_data["x"]
             y = minion_data["y"]
+            if team == 1:
+                self.player1_minion_infomation.append(
+                    {"id": number, "race": race, "x": x, "y": y})
+            if team == 2:
+                self.player2_minion_infomation.append(
+                    {"id": number, "race": race, "x": x, "y": y})
             self.game.choose_deploy_minion(race, number, team, x, y)
 
     def send_minions(self):
         """
-        クライアントにminionsの位置情報を送る。（未実装）
-        self.game.player1_alive_minion_listのデータを10個送る
+        クライアントにminionsの位置情報を送る。
+        self.player1_minion_list,self.player2_minion_listのデータを送る。
         """
-        pass
+        minion_dict = {"player1": self.player1_minion_infomation,
+                       "player2": self.player2_minion_infomation}
+        return minion_dict
 
     def execute_game(self):
         """
@@ -104,12 +114,6 @@ class GameObject:
         elif team == 2:
             minion.positionx = -1 * positionx
             self.player2_alive_minions_list.append(minion)
-
-    def minion_to_json(self):
-        """
-        deployフェイズでクライアントに送るべき情報をjson形式に変換する。
-        """
-        pass
 
     def time_evolve(self):
         """

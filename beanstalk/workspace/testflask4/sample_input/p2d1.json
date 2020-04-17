@@ -1,0 +1,70 @@
+{   
+    "key": 6,
+    "type": "deploy",
+    "deploy": 
+    {
+      "deployPhase": "1",
+      "yourTeam": [
+        {
+          "race": "Gagoiru",
+          "x": "1.0",
+          "y": "2.5",
+          "number": "1"
+        },
+        {
+          "race": "Goburui",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "2"
+        },
+        {
+          "race": "Maruta",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "3"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "4"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "5"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "6"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "7"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "8"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "9"
+        },
+        {
+          "race": "Gagoiru",
+          "x": "3.0",
+          "y": "5.5",
+          "number": "10"
+        }
+      ]
+    }
+}
