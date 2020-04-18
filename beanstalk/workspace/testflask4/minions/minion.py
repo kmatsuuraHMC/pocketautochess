@@ -12,26 +12,26 @@ class Minion:
     range,
     speed,
     state:str,
-    positon:list
+    position:list
         numpy.arrayとかに変えたいあとで
     team:int,
     """
     INF = 100000000
 
     def __init__(self, id, hp, atk, range, speed):
-        INF = 100000000
         self.id = id
         self.hp = hp
         self.atk = atk
         self.range = range
         self.speed = speed
         self.race = "minion"
-        self.action = "move"  # "attack" or "move" or "die"
-        self.positonx = 0
-        self.positony = 0
+        self.action = "stay"  # "attack" or "move" or "stay"
+        self.state = "alive"  # "dead" or "alive" 今の所使わない、将来的に状態異常などが出てきたら使うかも
+        self.positionx = 0.
+        self.positiony = 0.
         self.team = 0
         self.target = None
-        self.target_distance = 100000000
+        self.target_distance = Minion.INF  # distance between self and target
 
     def attack(self):
         """
@@ -40,51 +40,80 @@ class Minion:
         ----------------
         target: Minion
         """
-        if self.range >= self.distance:
+        if self.range >= self.target_distance:
             self.target.hp -= self.atk
+            if self.target.hp <= 0:
+                self.target = None
+                self.target_distance = Minion.INF
 
-    def calc_distance(self, target=None):
+    def calc_distance(self, target):
         """
         targetとの距離を計算
         """
-        target = self.target
-        if target == None:
-            return INF
-        distance = ((self.positonx - target.positionx)**2 +
-                    (self.positony - target.positiony)**2)**0.5
+        if target is None:
+            return Minion.INF
+        vectorx = target.positionx - self.positionx
+        vectory = target.positiony - self.positiony
+        distance = (vectorx**2 + vectory**2)**0.5
         return distance
 
     def choose_target(self, minion_list):
         """
-        targetを選択するメソッド
-        Attribute
+        targetを選択するメソッド、一番距離が近い相手をtargetにする。
+        Attribute * distance
         ----------------
         minion_list: list<Minion>
         """
-        target = self.target
+        self.target_distance = Minion.INF
         for minion in minion_list:
             distance = self.calc_distance(minion)
             if distance < self.target_distance:
                 self.target_distance = distance
-                self.target = target
+                self.target = minion
+
+    def set_action(self):
+        if self.target is None:
+            self.action = "stay"
+        elif self.target_distance <= self.range:
+            self.action = "attack"
+        else:
+            self.action = "move"
 
     def move(self):
         """
         targetに向かって移動するメソッド
         """
-        if self.target == None:
+        if self.target is None:
             return
-        vectorx = self.target.positonx - self.positionx
-        vectory = self.target.positony - self.positiony
-        distance = self.calc_distance()
-        self.positonx = self.speed * (vectorx / distance)
-        self.positony = self.speed * (vectory / distance)
+        vectorx = self.target.positionx - self.positionx
+        vectory = self.target.positiony - self.positiony
+        distance = self.calc_distance(self.target)
+        if distance <= self.range:
+            return
+        if (distance - self.range) < self.speed:
+            move = (distance - self.range) * 0.5
+        else:
+            move = self.speed
+        self.positionx += move * (vectorx / distance)
+        self.positiony += move * (vectory / distance)
 
-    def show_status(self):
+    def get_status(self):
         """
         デバック用、ステータスの確認
         """
-        return "ID:{0}HP:{1}, ATK:{2}".format(self.id, self.hp, self.atk)
+        try:
+            return {"team": self.team, "id": self.id, "hp": self.hp,
+                    "atk": self.atk, "x": self.positionx, "y": self.positiony,
+                    "target": (self.target.team, self.target.id, self.target.race), 
+                    "target_distance": self.target_distance,
+                    "target_position": (self.target.positionx, self.target.positiony),
+                    "action": self.action}
+        except:
+            return {"team": self.team, "id": self.id, "hp": self.hp,
+                    "atk": self.atk, "x": self.positionx, "y": self.positiony,
+                    "target": self.target, 
+                    "target_distance": self.target_distance,
+                    "action": self.action}
 
 
 class Gagoiru(Minion):
@@ -111,13 +140,6 @@ class Maruta(Minion):
     """
     Marutaクラス
     """
-    default_hp = 1500
-    default_atk = 10
-    default_range = 3
-    default_speed = 4
-    default_positionx = 0
-    default_positiony = 0
-    INF = 100000000
 
     def __init__(self, id):
         super().__init__(id, hp=1500, atk=10, range=3, speed=4)
@@ -128,4 +150,3 @@ class Maruta(Minion):
         範囲攻撃（未実装）
         """
         pass
-

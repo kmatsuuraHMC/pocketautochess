@@ -1,5 +1,5 @@
 from flask import Flask, request, session, escape, jsonify
-
+import json
 from gamecontroller import GameController
 
 # declare variable
@@ -63,6 +63,11 @@ def gamecontrol():
     if key == -1:
         game.state = 0
         return"game.stateを{}に初期化しました。".format(game.state)
+
+    # 排他処理
+    if key not in [game.player1.key, game.player2.key] and game.state >= 2:
+        return "Please wait for the current game ending"
+
     # 待ってる人がいない。
     if game.state == 0:
         game.player1.key = key
@@ -79,9 +84,7 @@ def gamecontrol():
 
     # ゲームスタート
     if game.state == 2:
-        if key not in [game.player1.key, game.player2.key]:
-            return "Please wait for the current game ending"
-        elif key == game.player1.key:
+        if key == game.player1.key:
             game.state = 3
             return "You are player1. Game start"
         elif key == game.player2.key:
@@ -89,167 +92,175 @@ def gamecontrol():
 
     # 1回目のコマを配置するフェイズ
     if game.state == 3:
-        p1set = 0
-        p2set = 0
         if key == game.player1.key:
             if data["deploy"]["deployPhase"] != "1":
                 return "deployPhaseが1でありません。"
-            if p1set == 1:
+            if game.player1_deploy == 1:
                 return "waiting for opponent"
             # 1回目のコマの配置
-            if p2set == 1:
+            game.deploy_minions(data)
+            if game.player2_deploy == 1:
                 game.state = 4
-            elif p2set == 0:
-                p1set = 1
-            return
+            elif game.player2_deploy == 0:
+                game.player1_deploy = 1
+            return "player1's minions are set successfully!"
 
         if key == game.player2.key:
             if data["deploy"]["deployPhase"] != "1":
                 return "deployPhaseが1でありません。"
-            if p2set == 1:
+            if game.player2_deploy == 1:
                 return "waiting for opponet"
             # 1回目のコマの配置
-            if p1set == 1:
+            game.deploy_minions(data)
+            if game.player1_deploy == 1:
                 game.state = 4
-            elif p1set == 0:
-                p2set = 1
-            return
+            elif game.player1_deploy == 0:
+                game.player2_deploy = 1
+            return "player2's minions are set successfully!"
 
     # 1回目のコマの配置を相手に送信
     if game.state == 4:
-        p1send = 0
-        p2send = 0
         if key == game.player1.key:
-            if p1send == 1:
+            if game.player1_deploy == 2:
                 return "waiting for opponent"
             # 1回目のコマのデータを送信
             to_client = game.send_minions()
-            if p2send == 1:
+            if game.player2_deploy == 2:
                 game.state = 5
-            elif p2send == 0:
-                p1send = 1
-            return jsonify(to_client)
+            elif game.player2_deploy == 1:
+                game.player1_deploy = 2
+            return json.dumps(to_client)
 
         if key == game.player2.key:
-            if p2send == 1:
-                return "waiting for opponet"
+            if game.player2_deploy == 2:
+                return "waiting for opponent"
             # 1回目のコマのデータを送信
             to_client = game.send_minions()
-            if p1send == 1:
+            if game.player1_deploy == 2:
                 game.state = 5
-            elif p1send == 0:
-                p2send = 1
-            return jsonify(to_client)
+            elif game.player1_deploy == 1:
+                game.player2_deploy = 2
+            return json.dumps(to_client)
 
     # 2回目のコマを配置するフェイズ
     if game.state == 5:
-        p1set = 0
-        p2set = 0
         if key == game.player1.key:
             if data["deploy"]["deployPhase"] != "2":
                 return "deployPhaseが2でありません。"
-            if p1set == 1:
+            if game.player1_deploy == 3:
                 return "waiting for opponent"
             # 2回目のコマの配置
-            if p2set == 1:
+            game.deploy_minions(data)
+            if game.player2_deploy == 3:
                 game.state = 6
-            elif p2set == 0:
-                p1set = 1
-            return
+            elif game.player2_deploy == 2:
+                game.player1_deploy = 3
+            return "player1's minions are set successfully!"
 
         if key == game.player2.key:
             if data["deploy"]["deployPhase"] != "2":
                 return "deployPhaseが2でありません。"
-            if p2set == 1:
+            if game.player2_deploy == 3:
                 return "waiting for opponet"
             # 2回目のコマの配置
-            if p1set == 1:
+            game.deploy_minions(data)
+            if game.player1_deploy == 3:
                 game.state = 6
-            elif p1set == 0:
-                p2set = 1
-            return
+            elif game.player1_deploy == 2:
+                game.player2_deploy = 3
+            return "player2's minions are set successfully!"
 
     # 2回目のコマの配置を相手に送信
     if game.state == 6:
-        p1send = 0
-        p2send = 0
         if key == game.player1.key:
-            if p1send == 1:
+            if game.player1_deploy == 4:
                 return "waiting for opponent"
             # 2回目のコマのデータを送信
             to_client = game.send_minions()
-            if p2send == 1:
+            if game.player2_deploy == 4:
                 game.state = 7
-            elif p2send == 0:
-                p1send = 1
+            elif game.player2_deploy == 3:
+                game.player1_deploy = 4
             return jsonify(to_client)
 
         if key == game.player2.key:
-            if p2send == 1:
+            if game.player2_deploy == 4:
                 return "waiting for opponet"
             # 2回目のコマのデータを送信
             to_client = game.send_minions()
-            if p1send == 1:
+            if game.player1_deploy == 4:
                 game.state = 7
-            elif p1send == 0:
-                p2send = 1
+            elif game.player1_deploy == 3:
+                game.player2_deploy = 4
             return jsonify(to_client)
 
-    # 3回目のコマの配置を相手に送信
+    # 3回目のコマを配置するフェイズ
     if game.state == 7:
-        p1send = 0
-        p2send = 0
         if key == game.player1.key:
             if data["deploy"]["deployPhase"] != "3":
                 return "deployPhaseが3でありません。"
-            if p1send == 1:
+            if game.player1_deploy == 5:
+                return "waiting for opponent"
+            # 3回目のコマの配置
+            game.deploy_minions(data)
+            if game.player2_deploy == 5:
+                game.state = 8
+            elif game.player2_deploy == 4:
+                game.player1_deploy = 5
+            return "player1's minions are set successfully!"
+
+        if key == game.player2.key:
+            if data["deploy"]["deployPhase"] != "3":
+                return "deployPhaseが3でありません。"
+            if game.player2_deploy == 5:
+                return "waiting for opponet"
+            # 3回目のコマの配置
+            game.deploy_minions(data)
+            if game.player1_deploy == 5:
+                game.state = 8
+            elif game.player1_deploy == 4:
+                game.player2_deploy = 5
+            return "player2's minions are set successfully!"
+
+    # 3回目のコマの配置を相手に送信
+    if game.state == 8:
+        if key == game.player1.key:
+            if data["deploy"]["deployPhase"] != "3":
+                return "deployPhaseが3でありません。"
+            if game.player1_deploy == 6:
                 return "waiting for opponent"
             # 3回目のコマのデータを送信
             to_client = game.send_minions()
-            if p2send == 1:
-                game.state = 8
-            elif p2send == 0:
-                p1send = 1
+            if game.player2_deploy == 6:
+                game.state = 9
+            elif game.player2_deploy == 5:
+                game.player1_deploy = 6
             return jsonify(to_client)
 
         if key == game.player2.key:
             if data["deploy"]["deployPhase"] != "3":
                 return "deployPhaseが3でありません。"
-            if p2send == 1:
+            if game.player2_deploy == 6:
                 return "waiting for an opponent"
             # 3回目のコマのデータを送信
             to_client = game.send_minions()
-            if p1send == 1:
-                game.state = 8
-            elif p1send == 0:
-                p2send = 1
+            if game.player1_deploy == 6:
+                game.state = 9
+            elif game.player1_deploy == 5:
+                game.player2_deploy = 6
             return jsonify(to_client)
 
     # ゲームの実行
-    if game.state == 8:
-        # gameの実行(終了したら勝手にgame.state = 9になる)
+    if game.state == 9:
+        # gameの実行(終了したら勝手にgame.state = 10にする)
+        game.execute_game()
+        game.state = 10
         return
 
     # ログを流す
-    if game.state == 9:
+    if game.state == 10:
         # お互いがログを受け取る
         game.state = 0
-
-
-@application.route("/posttest", methods=["GET", "POST"])
-def odd_even():
-    if request.method == "GET":
-        return """
-        下に整数を入力してください。奇数か偶数か判定します
-        <form action="/" method="POST">
-        <input name="num"></input>
-        </form>"""
-    else:
-        return """
-        {}は{}です！
-        <form action="/posttest" method="POST">
-        <input name="num"></input>
-        </form>""".format(str(request.form["num"]), ["偶数", "奇数"][int(request.form["num"]) % 2])
 
 
 # set the secret key.  keep this really secret:
